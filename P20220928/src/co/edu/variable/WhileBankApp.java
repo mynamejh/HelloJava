@@ -41,9 +41,7 @@ public class WhileBankApp {
 						}else {
 							System.out.println("맞는 계좌가 없습니다~");
 							break;
-				
-			}		
-					else if (menu == 3) {
+						} else if (menu == 3) {
 				System.out.println("조회할 계좌번호 입력>>>  ");
 				String accNo = scn.nextLine();
 				for(int i=0; i<banks.length; i++) {
@@ -53,7 +51,9 @@ public class WhileBankApp {
 				}
 				
 			} else if (menu == 4) {
-			
+				break;
+			}
+					
 			}else if(menu ==0) {
 				System.out.println("계좌번호입력>>>  ");
 				String accNo = scn.nextLine();
