@@ -25,7 +25,6 @@ public class WhileBank {
 			int input = scn.nextInt();
 			if(money + input > 100000) {
 				System.out.println("입금 그만!");	
-				// 잔고에 돈 입금됨!ㅠㅠ
 			}else{
 				money = money +input;
 			}

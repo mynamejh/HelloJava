@@ -18,7 +18,10 @@ public class MethodExample {
 	//디바이드 메소드를 반환하면 
 		//#두 수의 나눈 결과를 반환하는 메소드를 만들어라
 	public static double divide(double n1, double n2) {
-	 double result = n1/ n2;
+	 if(n2==0) {
+		 return 0;
+	 }
+	double result = n1/ n2;
 	 return result;
 	
 	}
@@ -26,7 +29,7 @@ public class MethodExample {
 	public static double divide(int n1, int n2) {
 		// 유형 : byte(1), short(2), int(4), long(8) 타입
 		//	   : float(4), double(8)
-		double result = n1 / n2; //3 /2 =>1.5
+		double result = (double) n1 / n2; //3 /2 =>1.5
 		return result;
 	}
 	
