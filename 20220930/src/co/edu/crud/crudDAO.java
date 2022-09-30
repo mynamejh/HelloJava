@@ -1,5 +1,8 @@
 package co.edu.crud;
 
-public class crudDAO {
+import co.edu.board.crudDAO;
 
+public class crudDAO {
+	private static crudDAO instance= new crudDAO();
+	private crudDAO() {}
 }
