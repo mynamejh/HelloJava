@@ -9,7 +9,7 @@ public class why {
 		return a+b;
 	}
 	int max(int a, int b) {
-		return a * b;
+		return a * b * a;
 	}
 	
 	public static void main(String[] args) {
