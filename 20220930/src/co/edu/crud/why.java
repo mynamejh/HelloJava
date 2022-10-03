@@ -6,7 +6,7 @@ public class why {
 	static int b;
 	
 	int add(int a, int b) {
-		return a+b;
+		return a+b+b;
 	}
 	int max(int a, int b) {
 		return a * b * a;
