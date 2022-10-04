@@ -18,7 +18,7 @@ public class AppMain {
 //		System.out.println(kim);
 	}
 	
-	workMan wman = new workMan();
-	wann.name ="직장인";
-	wman.age = 30;
+//	workMan wman = new workMan();
+//	wann.name ="직장인";
+//	wman.age = 30;
 }
