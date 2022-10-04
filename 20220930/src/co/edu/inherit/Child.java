@@ -14,6 +14,7 @@ public class Child extends Parent { // extends 뒤에 부모class, 1.변수선�
 	void method() {
 		System.out.println("Child method() call");
 	}
+	
 //	@Override 부모 클래스의 메소드를 재정의
 	public String toString() {
 		return "Child [field1=" + field1 + "]";
