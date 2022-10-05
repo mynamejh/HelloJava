@@ -6,33 +6,47 @@ import java.util.Scanner;
 public class EmployeeApp {
 	public static void main(String[] args) {
 // 1. 사원수(초기화) 2.사원정보입력 3.사원검색 4.사원리스트 9 종료
-	Scanner scn = new Scanner(System.in);
-	EmployeeService service = new EmployeeArray();
-	
-		while(true) {
-		System.out.println("1. 사원수(초기화) 2.사원정보입력 3.사원검색 4.사원리스트 9 종료");
-		System.out.print("메뉴를 선택하세요>>");
-		int menu = Integer.parseInt(scn.nextLine()); //메뉴 변수는 int타입  "1" -> 1 문자 1을 숫자 1로
-		if(menu==1) {
-			service.init(); //초기화 기능
-			
-		}else if(menu==2) {
-			service.input(); // 입력 기능
-			
-		}else if(menu==3) {
-			System.out.println("검색할 사원 번호 입력하세요>>");
-			int eId = Integer.parseInt(scn.nextLine()); // nextLine = enter값까지 들고 오겠다
-			String name = service.search(eId);// 이름 받아오기
-			System.out.println("사원의 이름은 " + name);
-			
-		}else if(menu ==4) {
-			service.print();
-			
-		}else if(menu ==9) {
-			System.out.println("프로그램을 종료합니다");
-			break;
+		Scanner scn = new Scanner(System.in);
+		EmployeeService service = new EmployeeArray();
+
+		while (true) {
+			System.out.println("1. 사원수(초기화) 2.사원정보입력 3.사원검색 4.사원리스트 5.사원급여 9 종료");
+			System.out.print("메뉴를 선택하세요>>");
+			int menu = Integer.parseInt(scn.nextLine()); // 메뉴 변수는 int타입 "1" -> 1 문자 1을 숫자 1로
+			if (menu == 1) {
+				service.init(); // 초기화 기능
+
+			} else if (menu == 2) {
+				service.input(); // 입력 기능
+				System.out.println("사원 이름");
+
+			} else if (menu == 3) {
+				System.out.println("검색할 사원 번호 입력하세요>>");
+				int eId = Integer.parseInt(scn.nextLine()); // nextLine = enter값까지 들고 오겠다
+				String name = service.search(eId);// 이름 받아오기
+				if (name == null) {
+					System.out.println("찾는 사원 정보가 없습니다");
+				} else {
+					System.out.println("사원의 이름은 " + name);
+				}
+			} else if (menu == 4) {
+				service.print();
+			} else if (menu == 5) {
+				System.out.println("검색할 사원 번호를 입력하세요>>");
+				int eId = Integer.parseInt(scn.nextLine());
+				int sal = service.searchSal(eId);
+
+				if (sal == -1) { // -1인 사람은 없으니까 없는 수로 설정!
+					
+					System.out.println("찾는 사원 정보가 없습니다");
+				} else {
+					System.out.println("사원의 급여는 " + sal);
+				}
+			} else if (menu == 9) {
+				System.out.println("프로그램을 종료합니다");
+				break;
+			}
 		}
-	}
-	System.out.println("프로그램 종료");
-	}//end of main()
-}//end of class
+		System.out.println("프로그램 종료");
+	}// end of main()
+}// end of class
