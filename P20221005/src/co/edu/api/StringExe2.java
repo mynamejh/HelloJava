@@ -9,7 +9,7 @@ public class StringExe2 {
 	}
 	
 	public static void changeCapital(String msg) {
-	//대문자 > 소문자, 소문자 > 대문자로 바꿔주는 기능
+	//대문자 > 소문자, 소문자 > 대문자(차이-32)로 바꿔주는 기능
 	//aBcD => AbCd 97:65, 98:66
 	// 소문자: 97~122, 대문자: 65~90
 		

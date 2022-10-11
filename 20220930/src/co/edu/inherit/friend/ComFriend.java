@@ -6,7 +6,7 @@ public class ComFriend extends Friend{
 	
 	public ComFriend() {
 		super();
-	}
+//	}
 	public ComFriend(String name, String phone, String company, String dept) {
 		super(name, phone);
 		this.company = company;

@@ -10,19 +10,24 @@ public class UnivFriend extends Friend{
 		this.univ = univ;
 		this.major = major;
 	}
-	public void setCompany(String company) {
-		this.company = company;
-	}
-	public void setDept(Stirng dept) {
-		this.dept = dept;
-	}
-	public String getCompany() {
-		return this.company;
-	}
-	public String setMajor(String major) {
-		
-	}
+
 	
+	public String getUniv() {
+//		return univ;
+	}
+
+	public void setUniv(String univ) {
+		this.univ = univ;
+	}
+
+	public String getMajor() {
+		return major;
+	}
+
+	public void setMajor(String major) {
+		this.major = major;
+	}
+
 	@Override
 	public String showInfo() {
 		return "학교 친구의 이름은 " + getName()

@@ -14,7 +14,7 @@ class Book {
 		this.publish = publish;
 	}
 // hashCode, equals 메소드 동일한 값이면 
-// 잘모를 p569
+// p569
 	@Override
 	public int hashCode() {
 		return bookCode.hashCode(); // string타입의 북코드를 해쉬코드를 가져오겠습니다

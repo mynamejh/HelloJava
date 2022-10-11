@@ -15,7 +15,7 @@ public class Employee {
 	//기본 생성자
 		this.deptId = 30;
 		this.deptName = "영업";
-		this.
+	
 	}
 
 	// 4개있는 생성자

@@ -1,5 +1,6 @@
 package co.edu.emp;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 //배열을 활용해서 정보를 저장함
@@ -25,22 +26,33 @@ public class EmployeeArray implements EmployeeService {
 		}
 
 		System.out.println("사번 입력>> ");
+		try {
 		int eId = Integer.parseInt(scn.nextLine());
+		}catch(NumberFormatException e){
+			System.out.println("숫자를 입력하세요");
+		}
+		
 		System.out.println("이름 입력>> ");
 		String name = scn.nextLine();
 		System.out.println("부서 입력>>");
+		try {
 		int deptId = Integer.parseInt(scn.nextLine());
-		System.out.println("급여 입력>> ");
+		}catch(NumberFormatException e) {
+			System.out.println("잘못 입력했습니다. 숫자를 입력하세요");
+		}
+		System.out.println("급여 입력>>");
 		int sal = Integer.parseInt(scn.nextLine());
 		// input() 추가
 
-		Employee emp = new Employee(eId, name, sal, deptId);
-		list[idx++] = emp;
+
+//		list.add(new Employee(eId, name, sal, deptId));
 	}
 
 	@Override
 	public String search(int employeeId) {
-		// 입력된 값 중에서 찾도록. 배열의 크기 list[5] => idx -> 지금 들어있는 크기만큼 돌려라~
+		// 입력된 값 중에서 찾도록. 배열의 크기 list[5] 
+//		=> idx -> 지금 들어있는 크기만큼 돌려라~
+		
 		String result = null;
 		for (int i = 0; i < idx; i++) {
 			if (list[i].getEmployeeId() == employeeId) {

@@ -43,7 +43,7 @@ public class MorningCode {
 		continue;
 		}
 		
-		list.add(new Employee2(inputs[0], inputs[1],Integer.parseInt(input[2]));
+//		list.add(new Employee2(inputs[0], inputs[1],Integer.parseInt(input[2]));
 		
 		
 
