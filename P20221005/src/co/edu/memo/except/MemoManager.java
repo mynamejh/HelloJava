@@ -46,6 +46,7 @@ public class MemoManager {
 	public void searchData() {
 		System.out.println("날짜 입력>> ");
 		String sDate = scn.nextLine(); // 입력 날짜 저장
+		
 		boolean exists = false;
 	
 		for(int i=0; i<memoStorage.size(); i++) { // 날짜를 입력받아서 
