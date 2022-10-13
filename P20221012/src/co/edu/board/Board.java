@@ -1,31 +1,96 @@
 package co.edu.board;
 
+import java.util.List;
+
 public class Board {
+	private int bno; // 기본키
+	private String title;
+	private String content;
+	private String writer;
+	private String date;
+	private int cnt; // 조회수
 
-	private int board_num;
-	private String board_title;
-	private String board_content;
+	public Board(int bno, String title, String content, String writer, String date, int cnt) {
+
+		this.bno = bno;
+		this.title = title;
+		this.content = content;
+		this.writer = writer;
+		this.date = date;
+		this.cnt = cnt;
+	}
 	
-	
-	
-	public int getBoard_num() {
-		return board_num;
-	}
-	public void setBoard_num(int board_num) {
-		this.board_num = board_num;
-	}
-	public String getBoard_title() {
-		return board_title;
-	}
-	public void setBoard_title(String board_title) {
-		this.board_title = board_title;
-	}
-	public String getBoard_content() {
-		return board_content;
-	}
-	public void setBoard_content(String board_content) {
-		this.board_content = board_content;
+//	public Board(int bno, String title, String content, String writer, String date, int cnt) {
+//		this.bno = bno;
+//		this.title = title;
+//		this.content = content;
+//		this.writer = writer;
+//		this.date = date;
+//		this.cnt = cnt;
+//	}
+
+	public Board(int bno, String content) {
+		this.bno = bno;
+		this.content = content;
 	}
 
-	
+	public int getBno() {
+		return bno;
+	}
+
+	public void setBno(int bno) {
+		this.bno = bno;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
+	public String getWriter() {
+		return writer;
+	}
+
+	public void setWriter(String writer) {
+		this.writer = writer;
+	}
+
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
+
+	public int getCnt() {
+		return cnt;
+	}
+
+	public void setCnt(int cnt) {
+		this.cnt = cnt;
+	}
+
+	@Override
+	public String toString() {
+		return "Board [bno=" + bno + ", title=" + title + ", content=" + content + ", writer=" + writer + ", date="
+				+ date + ", cnt=" + cnt + "]";
+	}
+
+	public List<Board> search() {
+		
+		return null;
+	}
+
 }
