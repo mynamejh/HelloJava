@@ -43,7 +43,7 @@ public class CharStreamExample {
 				System.out.println(">> ");
 				String temp = scn.nextLine();
 				if (temp.equals("quit"))
-					break; // 반복문 값이 문자열 quit가 들어오면 반복문을 빠져나가겠다!
+				break; // 반복문 값이 문자열 quit가 들어오면 반복문을 빠져나가겠다!
 			
 				fw.write(temp+"\n"); // temp에 있는 문자열=> '\n' 줄바꿈
 
