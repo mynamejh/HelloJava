@@ -13,9 +13,9 @@ class People {
 	void showColor() {
 		System.out.println(this.color);
 	};
-}
-peopleINfo(){
-	
+
+	peopleInfo(){
+		
 }
 class Student extends People {
 	int studNo;
