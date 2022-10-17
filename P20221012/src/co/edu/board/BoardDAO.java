@@ -192,6 +192,6 @@ public class BoardDAO extends DAO {
 			disconnect();
 
 		}
-
+		
 	}
 }
