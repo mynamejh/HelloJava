@@ -5,31 +5,37 @@ import java.util.Scanner;
 
 public class EscExample {
 	static Scanner scn = new Scanner(System.in);
-	
+
 	public static void main(String[] args) {
+		inputvalidate("입력하세요");
 		System.out.println("val 1)");
 		String vall = scn.nextLine();
-		
+
 		System.out.println("val 2)");
 		String val2 = scn.nextLine();
 		System.out.println("val 3)");
 		String val3 = scn.nextLine();
-		
+
 	}
-	public static String escEntered(String prompt) {
+
+	public static boolean inputValidate(String prompt) {
 		System.out.println(prompt);
 		try {
-			while(true) {
+			while (true) {
 				int inRead = System.in.read();
-				if(inRead == -1)
-					break;
-				System.out.println((char)inRead);
+
+				if (inRead == -1)
+					return true;
 			}
-		}catch(IOException e) {
+			System.out.println((char) inRead);
+
+		} catch (
+
+		IOExaption e) {
+
 			e.printStackTrace();
 		}
-		
-	
-	
-}
+		return true;
+	}
+
 }

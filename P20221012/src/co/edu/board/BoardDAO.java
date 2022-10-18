@@ -155,7 +155,7 @@ public class BoardDAO extends DAO {
 
 		try {
 			psmt = conn.prepareStatement(sql);
-				psmt.setInt(1, num);
+			psmt.setInt(1, num);
 				
 			rs = psmt.executeQuery();
 			if (rs.next()) {

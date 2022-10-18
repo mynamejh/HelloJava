@@ -65,7 +65,7 @@ public class CustomerDAO extends DAO { // 기능 넣는 테이블
 
 	public void update(Customer cust) { // 수정
 			String sql = "update custBoard"
-					+ "	set customer_name=?,"
+					+ "	set customer_name=?," //바꾸는것만 set적고
 					+ "	customer_tel =?, "
 					+ "	customer_date =sysdate" 
 					+ "	where customer_num =?";
