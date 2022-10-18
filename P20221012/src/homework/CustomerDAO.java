@@ -16,8 +16,8 @@ public class CustomerDAO extends DAO { // 기능 넣는 테이블
 	ResultSet rs= null;
 	
 
-	public boolean login(String id, String passwd) {// 로그인 기능
-		String sql = "select * from custBoard where = ?";
+	public boolean login(String id, String passwd) {
+		String sql = "select * from manBoard where manager_id = ?";
 		conn = getConnect();
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -26,14 +26,14 @@ public class CustomerDAO extends DAO { // 기능 넣는 테이블
 			
 
 			while (rs.next()) {
-				if (passwd.equals(rs.getString("passwd"))) {
-					return true;
+				if (passwd.equals(rs.getString("manager_pwd"))) {
+				return true;
 				}
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			disconnect();
+		disconnect();
 		}
 		return false;
 
@@ -64,19 +64,20 @@ public class CustomerDAO extends DAO { // 기능 넣는 테이블
 	}
 
 	public void update(Customer cust) { // 수정
-		String sql = "update custBoard"
-					+ "set customer_name=?," 
-					+ "customer_date =?," 
-					+ "where customer_num =?";
+			String sql = "update custBoard"
+					+ "	set customer_name=?,"
+					+ "	customer_tel =?, "
+					+ "	customer_date =sysdate" 
+					+ "	where customer_num =?";
 
 		conn = getConnect();
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, cust.getcustName());
-			psmt.setInt(2, cust.getcustNum());
-			psmt.setString(3, cust.getStartDate());
-			psmt.setString(4, cust.getcustTel());
+			psmt.setString(2, cust.getcustTel());
+			psmt.setInt(3, cust.getcustNum());
 
+			
 			int rs = psmt.executeUpdate(); // 실제 업데이트 되는 값!
 			System.out.println(rs + "건 수정되었습니다!");
 
@@ -97,6 +98,7 @@ public class CustomerDAO extends DAO { // 기능 넣는 테이블
 			
 			int rs = psmt.executeUpdate();
 			System.out.println(rs + " 님이 삭제되었습니다!");
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {

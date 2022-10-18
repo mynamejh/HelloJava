@@ -21,10 +21,10 @@ public class Customer {
 		this.custName = custName;
 	}
 
-	public Customer(String custName, int custNum, String custTel) {
+	public Customer(String custName, String custTel, int custNum) {
 		this.custName = custName;
-		this.custNum = custNum;
 		this.custTel = custTel;
+		this.custNum = custNum;
 	}
 
 	public String getcustName() {
@@ -32,7 +32,7 @@ public class Customer {
 	}
 
 	public void setcustName(String custName) {
-		this.custName = custName;
+	this.custName = custName;
 	}
 
 	public int getcustNum() {
@@ -62,7 +62,7 @@ public class Customer {
 
 	@Override
 	public String toString() {
-		return "Customer [name=" + custName + ", custNum=" + custNum + ", startDate=" + cDate + "]";
+		return "회원 이름은 " + custName + "회원 번호는 " + custNum + "시작 날짜는" + cDate;
 	}
 	
 	public String getString() {

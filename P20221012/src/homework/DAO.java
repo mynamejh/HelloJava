@@ -16,7 +16,7 @@ public class DAO {
 			Class.forName("oracle.jdbc.driver.OracleDriver"); //드라이브 연결
 			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "hr", "hr");
 			System.out.println("연결 성공");
-		} catch (Exception e) {
+	} catch (Exception e) {
 			System.out.println("연결 실패");
 		}
 		return conn;
@@ -28,7 +28,7 @@ public class DAO {
 				if(rs !=null) 
 				rs.close();
 				if(psmt !=null)
-					psmt.close();
+				psmt.close();
 				if(conn !=null)
 					conn.close();
 			} catch (SQLException e) {
