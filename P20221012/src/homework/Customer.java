@@ -62,10 +62,10 @@ public class Customer {
 
 	@Override
 	public String toString() {
-		return "회원 이름은 " + custName + "회원 번호는 " + custNum + "시작 날짜는" + cDate;
+		return "회원 이름: " + custName + "\t회원 번호: " + custNum + "\t 등록 날짜: " + cDate;
 	}
 	
 	public String getString() {
-	return " 회원 번호: "+ custNum + ", 회원 이름: " + custName + ",가입 일자 : "+ cDate + ",회원 휴대전화 :"+ custTel;
+	return "회원 번호: "+ custNum + "\t회원 이름: " + custName + "\t가입 일자 : "+ cDate + "\t회원 휴대전화 :"+ custTel;
 	}
 }

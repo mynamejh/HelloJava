@@ -157,9 +157,31 @@ public class CustomerDAO extends DAO { // 기능 넣는 테이블
 		return csbrd;
 	}
 
-	public boolean login(String id, int passwd) {
 
-		return false;
+	public List <Subject> find(){
+
+		conn = getConnect();
+		List<Subject> list = new ArrayList<Subject>();
+		try {
+			stmt=conn.createStatement();
+			rs= stmt.executeQuery("select * from Subject");
+			while(rs.next()) {
+				list.add(new Subject(rs.getString("subject"),
+						rs.getString("manager_id"),
+						rs.getString("time"),
+						rs.getInt("click")));
+			}
+		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			disconnect();
+		}
+		return list;
+		
 	}
+	
+
+	
 
 }

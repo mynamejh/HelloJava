@@ -156,8 +156,8 @@ public class BoardDAO extends DAO {
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setInt(1, num);
-				
 			rs = psmt.executeQuery();
+			
 			if (rs.next()) {
 				newboard=new Board(rs.getInt("board_num"),
 						rs.getString("board_title"),
