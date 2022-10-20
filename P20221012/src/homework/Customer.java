@@ -74,6 +74,7 @@ public class Customer {
 		return "회원 이름: " + custName + "\t회원 번호: " + custNum + "\t 등록 날짜: " + cDate;
 	}
 	
+	
 	public String getString() {
 	return "회원 번호: "+ custNum + "\t회원 이름: " + custName + "\t가입 일자 : "+ cDate + "\t회원 휴대전화 :"+ custTel;
 	}
