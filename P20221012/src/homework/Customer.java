@@ -8,6 +8,15 @@ public class Customer {
 	
 	public Customer() {}
 	
+	
+	
+	public Customer(String custName, int custNum) {
+		this.custName = custName;
+		this.custNum = custNum;
+	}
+
+
+
 	public Customer(String custName, int custNum, String cDate, String custTel) {
 		this.custName = custName;
 		this.custNum = custNum;

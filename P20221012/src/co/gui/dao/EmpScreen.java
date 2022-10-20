@@ -53,7 +53,7 @@ public class EmpScreen extends JFrame implements ActionListener, MouseListener {
 		DefaultTableModel model = new DefaultTableModel(headers, 0); // 테이블모델
 
 		table = new JTable(model);
-		table.addMouseListener(this); //empscreen this -인터페이스 -> implements뒤에 추가해주기
+		table.addMouseListener(this); // empscreen this -인터페이스 -> implements뒤에 추가해주기
 		centerPanel = new JScrollPane(table);
 
 		// 오른쪽 버튼
@@ -89,22 +89,58 @@ public class EmpScreen extends JFrame implements ActionListener, MouseListener {
 	// DB조회 후 table 결과를 반영.
 	public void searchData() {
 		DefaultTableModel model = (DefaultTableModel) table.getModel();
+		
+		//화면에 조회된 결과 있으면 clear
+		int allCnt = model.getRowCount();
+		for(int i=0; i<allCnt; i++) {
+			model.removeRow(0); //첫번째 카운트 만큼 삭제하겠다
+		}
 		String[] record = new String[6];
 //		list = dao.empList(null); // 초기값을 null로 주겠다// 이렇게 설정하면 화면에 안보여짐
-		list = dao.empList(new EmployeeVO(0, null, null, null, null, null)); // 사원번호는 int 타입이라서 0 -> 이렇게하면 목록 다 나옴~!
-
+		list = dao.empList(new EmployeeVO(0, fields[1].getText(), null, null, null, null)); // 사원번호는 int 타입이라서 0 -> 이렇게하면 목록 다 나옴~!
+//배열 첫번째: 사원번호 2번째 이름
 		for (int i = 0; i < list.size(); i++) {
-			record[0] = String.valueOf(list.get(i).getEmployeeId()); //리스트 0번째 값을 스트링 타입으로 바꾸겠다
+			record[0] = String.valueOf(list.get(i).getEmployeeId()); // 리스트 0번째 값을 스트링 타입으로 바꾸겠다
 			record[1] = list.get(i).getFirstName();
 			record[2] = list.get(i).getLastname();
 			record[3] = list.get(i).getEmail();
 			record[4] = list.get(i).getHiredate();
 			record[5] = list.get(i).getJobId();
 			model.addRow(record);
-		}//record가 가지고 있는
+		} // record가 가지고 있는
 
 		model.addRow(record);
 
+	}
+
+	// 삭제하기 위한 메소드
+	public void removeData() {
+		int selectedRow = table.getSelectedRow(); // 선택된 row반환. 인덱스값 반환해줌
+		if (selectedRow < 0) {
+			return; // 메소드 종료
+		}
+		DefaultTableModel model = (DefaultTableModel) table.getModel();
+		int empId = Integer.parseInt((String) model.getValueAt(selectedRow, 0)); // 선택된 인덱스값을 기준으로
+
+		dao.deleteEmp(empId);
+		model.removeRow(selectedRow); // 화면삭제.
+	}
+
+	//등록
+	public void addData() {
+		String[] records = new String[6];
+		DefaultTableModel model = (DefaultTableModel) table.getModel();
+		
+		for(int i=0; i<fields.length; i++) {
+			records[i] = fields[i].getText(); // 반복해서 필드값을 담겠다
+			
+		}
+		EmployeeVO emp = new EmployeeVO(0,records[1],records[2],records[3],records[4],records[5]);
+		dao.insertEmp(emp);
+		records[0] = String.valueOf(emp.getEmployeeId()); //string 타입을 int타입을 변경!
+		dao.insertEmp(emp);
+		
+		model.addRow(records);
 	}
 
 	@Override
@@ -113,8 +149,10 @@ public class EmpScreen extends JFrame implements ActionListener, MouseListener {
 		Object src = e.getSource();
 
 		if (src == addBtn) {
+			addData();
 
 		} else if (src == delBtn) {
+			removeData();
 
 		} else if (src == findBtn) {
 			searchData();
@@ -124,15 +162,15 @@ public class EmpScreen extends JFrame implements ActionListener, MouseListener {
 		}
 
 	}// end of actionPerformed(ActionEvent e)
-	
-	//마우스 이벤트 처리
+
+	// 마우스 이벤트 처리
 	@Override
 	public void mouseClicked(MouseEvent e) {
-	 //table 이벤트
+		// table 이벤트
 		int selectedRow = table.getSelectedRow(); // 선택된 row반환.
 		DefaultTableModel model = (DefaultTableModel) table.getModel();
-		int empId=Integer.parseInt((String) model.getValueAt(selectedRow, 0)); //선택된 인덱스값을 기준으로 
-		
+		int empId = Integer.parseInt((String) model.getValueAt(selectedRow, 0)); // 선택된 인덱스값을 기준으로
+
 		dao.deleteEmp(empId);
 	}
 
@@ -141,32 +179,28 @@ public class EmpScreen extends JFrame implements ActionListener, MouseListener {
 		new EmpScreen(); // EmpScreen()스크린 실행
 	}
 
-	
-	
-	
-	
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }// end of class

@@ -8,6 +8,14 @@ public class Subject {
 	
 	public Subject() {};
 	
+	
+	public Subject(String subject, String managerName, int click) {
+		this.subject = subject;
+		this.managerName = managerName;
+		this.click = click;
+	}
+
+
 	public Subject(String subject, String managerName, String time, int click) {
 		this.subject = subject;
 		this.managerName = managerName;
@@ -45,5 +53,6 @@ public class Subject {
 	public String toString() {
 		return "강의:" + subject + "\t 강사이름:" + managerName + "\t 수업시간:" + time;
 	}
+
 	
 }

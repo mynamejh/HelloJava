@@ -76,7 +76,6 @@ public class SubjectDAO extends DAO {
 
 		Subject swim = null;
 		String sql = "select * from subject where manager_id=?";
-		
 
 		conn = getConnect();
 		try {
@@ -96,26 +95,46 @@ public class SubjectDAO extends DAO {
 		}
 		return swim;
 	}
+	
 
-	public void getadd(String teacher,int answer) {
-		String sql = "update from subject set click = click+1 where manager_name=?";
-		conn= getConnect();
-		
+
+	public void getadd(String teacher, int answer) {
+		String sql = "update subject set click = click+1  where manager_id=?";
+		conn = getConnect();
+
 		try {
-			psmt=conn.prepareStatement(sql);
+			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, teacher);
-			psmt.executeUpdate();
-			
-			if(answer==1) {
+
+			if (answer == 1) {
 				psmt.executeUpdate();
 			}
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			disconnect();
 		}
-	
+
 	}
 }
-		
+//	public List<Subject> count("") {
+//		String sql = "select subject, manager_id, time, click from subject order by click desc";
+//		String result = null;
+//		conn = getConnect();
+//		try {
+//			psmt = conn.prepareStatement(sql);
+//			psmt.setString(1, "click");
+//			rs = psmt.executeQuery();
+//			while (rs.next()) {
+//				new Subject(rs.getString("subject"), rs.getString("manager_id"), rs.getString("time"),
+//						rs.getInt("click"));
+//			}
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		} finally {
+//			disconnect();
+//		}
+//	
+//	}
+
