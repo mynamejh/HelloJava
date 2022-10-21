@@ -37,12 +37,12 @@ public class CustomerDAO extends DAO { // 기능 넣는 테이블
 
 	}
 
-	public void insert(Customer cust) { // 먼저 sql문 변수 생성!~
+	public void insert(Customer cust) { 
 		String sql = "insert into custBoard (customer_name, customer_num, customer_date, customer_tel) values(?,?,?,?)";
 
-		conn = getConnect(); // 추가
+		conn = getConnect(); 
 
-		try {// psmt는 conn=getConnection() 하고나서 생성 할 수 있음~
+		try {
 			psmt = conn.prepareStatement(sql);
 
 			psmt.setString(1, cust.getcustName());
@@ -61,8 +61,8 @@ public class CustomerDAO extends DAO { // 기능 넣는 테이블
 
 	}
 
-	public void update(Customer cust) { // 수정
-		String sql = "update custBoard" + "	set customer_name=?," // 바꾸는것만 set적고
+	public void update(Customer cust) {
+		String sql = "update custBoard" + "	set customer_name=?," 
 				+ "	customer_tel =?, " + "	customer_date =sysdate" + "	where customer_num =?";
 
 		conn = getConnect();
@@ -72,7 +72,7 @@ public class CustomerDAO extends DAO { // 기능 넣는 테이블
 			psmt.setString(2, cust.getcustTel());
 			psmt.setInt(3, cust.getcustNum());
 
-			int rs = psmt.executeUpdate(); // 실제 업데이트 되는 값!
+			int rs = psmt.executeUpdate(); 
 			System.out.println(rs + "건 수정되었습니다!");
 
 		} catch (SQLException e) {
@@ -82,7 +82,7 @@ public class CustomerDAO extends DAO { // 기능 넣는 테이블
 		}
 	}
 
-	public boolean delete(int custNum) { // 삭제
+	public boolean delete(int custNum) {
 		String sql = "delete from custBoard where customer_num =? ";
 		conn = getConnect();
 
@@ -101,8 +101,8 @@ public class CustomerDAO extends DAO { // 기능 넣는 테이블
 		return false;
 	}
 
-	public List<Customer> search() { // 전체 목록
-//		String sql = "select * from custBoard order by customer_num";
+	public List<Customer> search() {
+
 		conn = getConnect();
 		List<Customer> list = new ArrayList<>();
 
@@ -124,7 +124,7 @@ public class CustomerDAO extends DAO { // 기능 넣는 테이블
 
 	}
 
-	public Customer getCust(int custNum) { // 1개조회
+	public Customer getCust(int custNum) { 
 
 		Customer csbrd = null;
 		String sql = "select * from custBoard where customer_num=?";
@@ -168,7 +168,7 @@ public class CustomerDAO extends DAO { // 기능 넣는 테이블
 	}
 
 	public List<Subject> like() {
-		String sql = "select subject, manager_id, click  from Subject order by click ";
+		String sql = "select subject, manager_id, click  from Subject  ";
 		conn = getConnect();
 		List<Subject> list = new ArrayList<Subject>();
 		try {

@@ -53,6 +53,9 @@ public class Subject {
 	public String toString() {
 		return "강의:" + subject + "\t 강사이름:" + managerName + "\t 수업시간:" + time;
 	}
+	public String getinfoString() {
+		return "강의:" + subject + "\t 강사이름:" + managerName + "\t 회원수:" + click;
+	}
 
 	
 }

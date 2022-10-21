@@ -72,7 +72,7 @@ public class SubjectDAO extends DAO {
 		}
 	}
 
-	public Subject getSub(String managerName) { // 1개조회
+	public Subject getSub(String managerName) {
 
 		Subject swim = null;
 		String sql = "select * from subject where manager_id=?";
@@ -118,23 +118,3 @@ public class SubjectDAO extends DAO {
 
 	}
 }
-//	public List<Subject> count("") {
-//		String sql = "select subject, manager_id, time, click from subject order by click desc";
-//		String result = null;
-//		conn = getConnect();
-//		try {
-//			psmt = conn.prepareStatement(sql);
-//			psmt.setString(1, "click");
-//			rs = psmt.executeQuery();
-//			while (rs.next()) {
-//				new Subject(rs.getString("subject"), rs.getString("manager_id"), rs.getString("time"),
-//						rs.getInt("click"));
-//			}
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		} finally {
-//			disconnect();
-//		}
-//	
-//	}
-

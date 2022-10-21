@@ -14,6 +14,8 @@ public class ClassApp {
 		Customer cust = null;
 		String logid = null;
 		List<Customer> list = new ArrayList<>();
+		MailApp app = new MailApp();
+		
 
 		while (true) {
 			System.out.println(">>>>>>>>>>>>  예담수영장  <<<<<<<<<<<<");
@@ -63,6 +65,9 @@ public class ClassApp {
 							dao2.getadd(teacher, yes);
 
 							System.out.println("등록완료!!! 등록 확인 메일! 결제를 진행해주세요!");
+							System.out.println("이메일 입력해주세요~");
+							String mail = scn.nextLine();
+							app.sendMail("jihyun1594@naver.com", mail, "예담수영장 입금안내 메일", "입금완료후 등록이 완료됩니다!");
 
 						} else {
 							System.out.println("취소됐습니다!!");
@@ -86,7 +91,7 @@ public class ClassApp {
 
 				List<Subject> list2 = dao.like();
 				for (Subject i : list2) {
-					System.out.println(i);
+					System.out.println(i.getinfoString());
 
 				}
 				
@@ -110,6 +115,7 @@ public class ClassApp {
 				System.out.println("회원 수정");
 				System.out.println("수정할 회원 번호>> ");
 				int custNum = Integer.parseInt(scn.nextLine());
+				if(custNum)
 				System.out.println("수정할 회원 이름>> ");
 				String custName = scn.nextLine();
 				System.out.println("수정할 전화번호>> ");

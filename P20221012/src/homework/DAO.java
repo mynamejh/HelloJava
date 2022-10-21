@@ -7,14 +7,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class DAO {
-	Connection conn; //getConnection() 메소드를 통해 db연결
-	PreparedStatement psmt; //작성된 것을  연결
-	ResultSet rs; //쿼리 결과 담은 객체! 
+	Connection conn; 
+	PreparedStatement psmt; 
+	ResultSet rs; 
 	
 	public Connection getConnect()  {
 		try {
-			Class.forName("oracle.jdbc.driver.OracleDriver"); //드라이브 연결
-			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "hr", "hr");
+			Class.forName("oracle.jdbc.driver.OracleDriver"); 
+			conn = DriverManager.getConnection("jdbc:oracle:thin:@192.168.0.25:1521:xe", "hr", "hr");
 			System.out.println("연결 성공");
 	} catch (Exception e) {
 			System.out.println("연결 실패");
