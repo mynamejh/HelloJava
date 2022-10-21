@@ -1,5 +1,6 @@
 package co.edu.io;
 
+import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -9,19 +10,26 @@ import java.util.Scanner;
 public class CharStreamExample {
 
 	public static void main(String[] args) {
-		write();
+//		write();
+		read();
 	}
 	
 	public static void read() {
-		try {//입력스트림
-			FileReader reader = new FileReader("src/co/edu/io/ByteStreamExample.java");
+		try {//메모장에 입력된 값을 읽어오는것. 메소드 형태로 어떤값을 읽어와서 데이터를 생성한다
+			FileReader reader = new FileReader("C:/Temp/addr.txt");//읽어올 파일(작성되어졌음 미리)
+			BufferedReader br = new BufferedReader(reader); //한번에 처리하는 보조스트림
 			
 			while(true) {
-				int bytes=reader.read();
-				if(bytes ==-1) {
+				String bytes=br.readLine();
+				if(bytes ==null) {
 				break;
 			}
-				System.out.print((char)bytes+" ");
+				String[] strAry = bytes.split(","); //문장들을 배열에 넣겠다(split이 공백을 기준으로 문장나눔... 유용....)
+				System.out.println("학번" + strAry[0]);
+				System.out.println("성명" + strAry[1]);
+				System.out.println("영어" + strAry[2]);
+				System.out.println("수학" + strAry[3]);
+				System.out.print("======="); //char가 없으면 문자로 출력된다. \n 줄바꿈
 			}
 			reader.close();
 			System.out.println("completed");
@@ -31,7 +39,7 @@ public class CharStreamExample {
 			e.printStackTrace();
 		}
 	}
-	public static void write() {
+	public static void write() {//문자열 filewriter
 	
 		Scanner scn = new Scanner(System.in); // 변수선언
 
