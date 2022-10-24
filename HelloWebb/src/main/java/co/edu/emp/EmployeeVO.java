@@ -20,6 +20,10 @@ public class EmployeeVO {
 		
 	}
 
+	public EmployeeVO(String jobId) {
+		this.jobId = jobId;
+	}
+	
 
 	public EmployeeVO(int employeeId, String lastname, String email, String hiredate, String jobId) {
 		this.employeeId = employeeId;

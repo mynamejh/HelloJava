@@ -96,12 +96,12 @@ public class EmpDAO extends DAO { // DAO는 데이터베이스 기능을 처리�
 		List<EmployeeVO> empList = new ArrayList<EmployeeVO>(); // 리스트에 값 넣어주는 list변수 생성!		
 		getConnect();
 		String sql = "select * from empl"
-				+ "	where employee_id = decode(?, 0, employee_id, ?)"
-				+ "	and first_name like '%'||?||'%' " //두문장을 연결기호: || 
-				+ "	and last_name like '%'||?||'%' "
-				+ "	and email like '%'||?||'%' "
-				+ "	and to_char(hire_date, 'yyyy-mm-dd') like '%'||?||'%' " //to_char데이트 타입을 문자로 가져오겠다
-				+ "	and job_id = nvl(?, job_id) "
+				+ "		where nvl(employee_id,0) = decode(?, 0, nvl(employee_id, ?))"
+				+ "		and first_name like '%'||?||'%' " //두문장을 연결기호: || 
+				+ "		and last_name like '%'||?||'%' "
+				+ "		and email like '%'||?||'%' "
+				+ "		and to_char(hire_date, 'yyyy-mm-dd') like '%'||?||'%' " //to_char데이트 타입을 문자로 가져오겠다
+				+ "		and job_id = nvl(?, job_id) "
 				+ "	order by employee_id";
 		
 		try {

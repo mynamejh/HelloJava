@@ -11,11 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import co.edu.emp.EmpDAO;
 import co.edu.emp.EmployeeVO;
-
+//서블릿은 클래스다!
 /**
- * Servlet implementation class AddMemberServ
+ * Servlet implementation class AddMemberServ 
  */
-@WebServlet({"/addMember","/addMemberServlet"})
+@WebServlet({"/addMember","/addMemberServlet"}) // 주소표시줄 실행! 두개중에 아무거나 사용가능!
 public class AddMemberServ extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -24,11 +24,12 @@ public class AddMemberServ extends HttpServlet {
         super();
       
     }
-
-
+    //# 어떤 방식의 요청인지 구분하는게 중요! (기억해놓기~!)
+    //get 방식의 요청이 들어오면, 톰캣이 get방식으로 실행 (post호출하면 post방식으로 실행!)
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException { //생성자만들어주고 sql순서대로 적어줌!
 		
+		//content타입 
 		response.setContentType("text/html;charset=UTF-8");//컨텐츠가 보여지는 타입이 HTML이다!(content 타입을 지정)
 		
 		System.out.println("/addMemberSer 페이지입니다.");
@@ -58,10 +59,14 @@ public class AddMemberServ extends HttpServlet {
 	
 	}
 
-
+	//post방식의 요청시 실행(톰캣)
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
-		doGet(request, response);
+		response.setContentType("text/html;charset=UTF-8");
+//		doGet(request, response);
+		PrintWriter out =  response.getWriter();// 사용자의 브라우저(출력스트림 생성)
+//		out.print("<h3>Post 방식의 요청</h3>");)
+		
+	
 	}
-
 }
