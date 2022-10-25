@@ -10,25 +10,15 @@ import javax.servlet.http.HttpSession;
 import co.edu.common.Command;
 import co.edu.common.HttpUtil;
 
-public class MainControl implements Command {
+public class LogOut implements Command {
 
-	@Override //제일첫번째 보이는 페이지
+	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
 		HttpSession session = req.getSession();
+		session.invalidate(); // 웹 브라우저에 있는 session 값을 삭제하겠다!
 		
-		//session 정보가 있으면 첫 페이지에 메인페이지로 이동하고
-		//없으면 로그인 페이지로 이동하도록 설정!
+		HttpUtil.forward(req, resp, "memberLog/loginForm.jsp");
 		
-		String id = (String) session.getAttribute("id");
-		if(id !=null) {
-			HttpUtil.forward(req, resp, "memberView/main.jsp");
-		}else {
-			HttpUtil.forward(req, resp, "memberLog/loginForm.jsp");
-		}
-		
-		
-
 	}
 
 }

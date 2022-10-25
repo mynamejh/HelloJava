@@ -4,12 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>memberInsertOutput.jsp</title>
+<title>삭제처리결과 페이지(memberDeleteOutput.jsp)</title>
 </head>
 <body>
-	<h3>처리가 완료되었습니다!</h3>
-	
+	<h3>삭제가 완료되었습니다!</h3>
 
-<%@ include file="home.jsp" %>
 </body>
 </html>
