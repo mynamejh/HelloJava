@@ -53,7 +53,7 @@ public class BoardDAO extends DAO {
 				psmt.setInt(1, boardNo);
 				rs=psmt.executeQuery();
 				if(rs.next()) {
-//	//				vo = new boardVO(rs.get)
+//	//	//			vo = new boardVO(rs.get)
 				}
 				
 			} catch (SQLException e) {
