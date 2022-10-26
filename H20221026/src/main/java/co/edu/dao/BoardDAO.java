@@ -53,13 +53,25 @@ public class BoardDAO extends DAO {
 				psmt.setInt(1, boardNo);
 				rs=psmt.executeQuery();
 				if(rs.next()) {
-//	//	//			vo = new boardVO(rs.get)
+//					vo = new boardVO(rs.get)
+				}
+				while (rs.next()) {
+					BoardVO board = new BoardVO();
+					board.setBoardNo(rs.getInt("board_no"));
+					board.setTitle(rs.getString("title"));
+					board.setContent(rs.getString("content"));
+					board.setWriter(rs.getString("writer"));
+					board.setWriteDate(rs.getString("write_date"));
+					board.setClickCnt(rs.getInt("click_cnt"));
+					board.setImage(rs.getString("image"));
+
 				}
 				
 			} catch (SQLException e) {
 			
 				e.printStackTrace();
 			}
+			return vo;
 			
 			
 			
