@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>memberAdd.html</title>
+</head>
+<body>
+    <!-- 사원번호, 상위폴더로 이동하는것! -->
+    <form action="../addMemberServlet" method="post">
+        
+        <label for="employee_id"> 사원번호
+        <input type ="text" name="employee_id" id="employee_id"><br></label>
+        
+        <label for="last_name"> last_name 
+        <input type="text" name="last_name" id="last_name"><br></label>
+        
+        <label for="email"> email
+        <input type="text" name="email" id="email"><br></label>
+        
+        <label for="hire_date"> hire_date
+        <input type="text" name="hire_date" id="hire_date"><br></label>
+        
+        <label for="job_id"> job_id
+        <input type="text" name="job_id" id="job_id"><br></label>
+        
+        <input type="submit" value="등록">
+        <input type="reset" value="취소">
+
+    </form>
+
+</body>
+</html>
