@@ -6,13 +6,11 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-<<<<<<< HEAD
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import co.edu.board.BoardVO;
 import co.edu.common.Control;
-import co.edu.common.HttpUtil;
 import co.edu.service.BoardService;
 import co.edu.service.BoardServiceImpl;
 
@@ -20,73 +18,33 @@ public class WriteBoard implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-			String saveDir= req.getServletContext().getRealPath("upload");
-			System.out.println(saveDir);
-			String encod="UTF-8";
-			int maxSize=5 * 1024 * 1024; //1024 1kb임 -> 총5mb까지 받겠다~ 제한두는것!
-			
-			MultipartRequest mr = new MultipartRequest(
-					req, //요청정보.
-					saveDir, //저장위치.
-					maxSize, //파일크기.
-					encod, //인코딩.
-					new DefaultFileRenamePolicy()//리네임 정책
-	);
-			String title = mr.getParameter("title");
-			String content = mr.getParameter("content");
-			String writer = mr.getParameter("writer");
-			String image = mr.getFilesystemName("image");
-	
-			
-			//db입력
-			BoardService service = new BoardServiceImpl();
-			service.insertBoard(new BoardVO(0, title, content, writer, null, 0, image));
-	
-//			HttpUtil.forward(req, resp, "bulletin/bulletin,tiles");
-			resp.sendRedirect("bulletin.do");
-	
-	
-=======
-import org.apache.catalina.tribes.MembershipService;
-
-import com.oreilly.servlet.MultipartRequest;
-import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
-
-import co.edu.board.BoardVO;
-import co.edu.common.Control;
-import co.edu.common.HttpUtil;
-import co.edu.service.BoardService;
-import co.edu.service.BoardServiceImpl;
-
-public class WriteBoard implements Control {
-
-	@Override
-	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		String saveDir = req.getServletContext().getRealPath("upload");
 		System.out.println(saveDir);
-		String encod = "UTF-8"; // 인코딩 방식.
-		int maxSize = 5 * 1024 * 1024; // 5mb크기까지만 업로드할 수 있게 제한
-
+		String encod = "UTF-8";
+		int maxSize = 5 * 1024 * 1024; //5mb로 제한
+		
 		MultipartRequest mr = new MultipartRequest(
-				req, //요청정보 
+				req, //요청정보
 				saveDir, //저장위치
 				maxSize, //파일크기
 				encod, //인코딩방식
-				new DefaultFileRenamePolicy()//같은파일이 있을때 rename정책.
-		);
+				new DefaultFileRenamePolicy()//리네임 정책.
+				
+			);
 		
 		String title = mr.getParameter("title");
 		String content = mr.getParameter("content");
 		String writer = mr.getParameter("writer");
-		String image = mr.getFilesystemName("image"); //이미지는 parameter가 아님
+		String image = mr.getFilesystemName("image");
 		
 		//디비 입력.
-		BoardService service = new BoardServiceImpl();
+		BoardServiceImpl service = new BoardService();
 		service.insertBoard(new BoardVO(0, title, content, writer, null, 0, image));
 		
-//		HttpUtil.forward(req, resp, "bulletin/bulletin.tiles"); //처리결과는 목록으로 넘어감
-		resp.sendRedirect("bulletin.do"); //이쪽으로 포워딩. 이게 실행되면 리스트를 보여주니까.
->>>>>>> branch 'master' of https://github.com/mynamejh/HelloJava.git
+//		HttpUtil.forward(req, resp, "bulletin/bulletin.tiles");
+		resp.sendRedirect("bulletin.do");
+		//입력하고 목록페이지로 간다.
 	}
 
 }

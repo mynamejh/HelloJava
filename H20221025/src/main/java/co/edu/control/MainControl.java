@@ -13,12 +13,8 @@ public class MainControl implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-<<<<<<< HEAD
-		HttpUtil.forward(req, resp, "member/member.tiles");
+		HttpUtil.forward(req, resp, "template/home.tiles");
 
-=======
-		HttpUtil.forward(req, resp, "member/member.tiles"); //원래는 하나하나 지정해줬지만, member폴더 밑에 member.jsp를 불러달라는 걸 tiles.xml에서 지정했다. 
->>>>>>> branch 'master' of https://github.com/mynamejh/HelloJava.git
 	}
 
 }

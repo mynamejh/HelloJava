@@ -1,6 +1,7 @@
 package co.edu.control;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -12,20 +13,24 @@ import co.edu.common.HttpUtil;
 import co.edu.service.BoardServiceImpl;
 import co.edu.service.BoardService;
 
-public class SearchBoard implements Control {
+public class faqList implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		//bno 파라메터읽기
-		
-		String bno = req.getParameter("bno");
+		String page = req.getParameter("page");
+		page = page == null ? "1" : page;
+		int pg = Integer.parseInt(page);
 		
 		BoardServiceImpl service = new BoardService();
-		BoardVO board = service.findBoard(Integer.parseInt(bno));
+		List<BoardVO> list = service.pageList(pg); 
+		//service.getList(new BoardVO(0,"","","","",0,"")); //전체 데이터 가져오기
 		
-		req.setAttribute("board", board);
+		req.setAttribute("fList", list); 
 		
-		HttpUtil.forward(req, resp, "bulletin/searchBulletin.tiles");
+		HttpUtil.forward(req, resp, "/bulletin/faq.tiles");
+
 	}
+
+	
 
 }
