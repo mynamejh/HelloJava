@@ -5,28 +5,31 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>게시글 상세보기</title>
+<title>게시글 상세 보기</title>
 </head>
 <body>
 	<%
-		BoardVO result = (BoardVO) request.getAttribute("board");
+		BoardVO result = (BoardVO)request.getAttribute("board");
 	%>
-	<table border="1">
+	<table border = '1'>
 		<tr>
-			<th>글번호</th><td><%=result.getBoardNo() %></td><th>작성자</th><td><%=result.getWriter() %></td>
+			<th>글번호</th><td><%=result.getBoardNo()%></td>
+			<th>작성자</th><td><%=result.getWriter()%></td>
 		</tr>
 		<tr>
-			<th>제목</th><td><%=result.getTitle() %></td>
+			<th>제목</th><td><%=result.getTitle()%></td>
 		</tr>
 		<tr>
-			<td colspan='2'>
-			<textarea rows=5 cols=30>
-				<%=result.getContent() %>
-			</textarea>
+			<td colspan ='2'>
+				<textarea rows = '5' cols='40' style =  "text-align: left;"><%=result.getContent()%></textarea>
 			</td>
-		</tr>	
+			<td>
+				<img src = "uplaoad/<%=result.getImage() %>" alt="" style="width:200px; height:100px" >
+			</td>
+		</tr>
 		<tr>
-			<th>작성일자</th><td><%=result.getWriteDate() %></td><th>조회수</th><td><%=result.getClickCnt() %></td>
+			<th>작성일자</th><td><%=result.getWriteDate()%></td>
+			<th>조회수</th><td><%=result.getClickCnt()%></td>
 		</tr>
 	</table>
 </body>

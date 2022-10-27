@@ -5,14 +5,15 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor //생성자 만들어주는
-@NoArgsConstructor //매개값이 없는 생성자 만들어주는
+@AllArgsConstructor
+@NoArgsConstructor
 public class BoardVO {
 	private int boardNo;
 	private String title;
 	private String content;
 	private String writer;
-	private String writeDate; //2020-11-23
+	private String writeDate; //굳이 date로 안해도 된다.
 	private int clickCnt;
 	private String image;
+	
 }

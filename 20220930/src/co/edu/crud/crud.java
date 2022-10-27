@@ -4,6 +4,10 @@ public class crud {
 <<<<<<< HEAD
 
 
+=======
+<<<<<<< HEAD
+
+
 	private String publishingCom;
 	private int numberBook;
 	
@@ -57,6 +61,7 @@ public class crud {
 }
 =======
 	private String bookNo;
+>>>>>>> branch 'master' of https://github.com/mynamejh/HelloJava.git
 	private String publishingCom;
 	private int numberBook;
 	
@@ -108,4 +113,7 @@ public class crud {
 		return "crud [bookNo=" + bookNo + ", publishingCom=" + publishingCom + ", numberBook=" + numberBook + "]";
 	}
 }
+<<<<<<< HEAD
+=======
+>>>>>>> branch 'master' of https://github.com/mynamejh/HelloJava.git
 >>>>>>> branch 'master' of https://github.com/mynamejh/HelloJava.git

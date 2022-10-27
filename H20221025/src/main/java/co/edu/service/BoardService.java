@@ -3,15 +3,45 @@ package co.edu.service;
 import java.util.List;
 
 import co.edu.board.BoardVO;
+import co.edu.board.MemberVO;
+import co.edu.dao.BoardDAO;
 
-public interface BoardService {
-	//기능만 정의.
-	public BoardVO insertBoard(BoardVO vo); //입력기능
-	public List<BoardVO> getList(BoardVO vo); //목록조회
-	public BoardVO findBoard(int boardNo); //한건 조회
-	public boolean updateBoard(BoardVO vo); //수정
-	public boolean deleteBoard(int boardNo); //삭제
+public class BoardService implements BoardServiceImpl{
+	BoardDAO dao = new BoardDAO();
 	
-	//페이지 기능.
-	public List<BoardVO> pageList(int page);
+	@Override
+	public BoardVO insertBoard(BoardVO vo) {
+		return dao.insertBoard(vo);
+	}
+
+	@Override
+	public List<BoardVO> getList(BoardVO vo) {
+		return dao.BoardList(vo);
+	}
+
+	@Override
+	public BoardVO findBoard(int boardNo) {
+		return dao.searchBoard(boardNo);
+	}
+
+	@Override
+	public boolean updateBoard(BoardVO vo) {
+		return false;
+	}
+
+	@Override
+	public boolean deleteBoard(int boardNo) {
+		return false;
+	}
+
+	@Override
+	public List<BoardVO> pageList(int page) {
+		return dao.pageList(page);
+	}
+	public List<MemberVO> memberList(){
+		return dao.memberList();
+	
+	
+	}
+	
 }

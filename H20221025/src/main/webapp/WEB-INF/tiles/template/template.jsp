@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
- <!DOCTYPE html>
+    
+    <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"  %>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8" />
@@ -13,6 +14,25 @@
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
+     	<style>
+     		.pagination {
+			  display: inline-block;
+			}
+			
+			.pagination a {
+			  color: black;
+			  float: left;
+			  padding: 8px 16px;
+			  text-decoration: none;
+			}
+			
+			.pagination a.active {
+			  background-color: pink;
+			  color: white;
+			}
+		
+			.pagination a:hover:not(.active) {background-color: #ddd;}
+     	</style>   
     </head>
     <body>
         <div class="d-flex" id="wrapper">
@@ -23,6 +43,7 @@
             <div id="page-content-wrapper">
                 <!-- Top navigation-->
                 <tiles:insertAttribute name="header"></tiles:insertAttribute>
+                
                 <!-- Page content-->
                 <tiles:insertAttribute name="body"></tiles:insertAttribute>
             </div>
@@ -33,4 +54,4 @@
         <script src="js/scripts.js"></script>
     </body>
 </html>
- 
+    
