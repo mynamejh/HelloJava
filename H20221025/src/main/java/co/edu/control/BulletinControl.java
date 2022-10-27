@@ -57,7 +57,6 @@ public class BulletinControl implements Control {
 		
 		HttpUtil.forward(req, resp, "bulletin/bulletin.tiles");
 		
->>>>>>> branch 'master' of https://github.com/mynamejh/HelloJava.git
 	}
 
 }
