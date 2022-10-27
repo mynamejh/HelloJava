@@ -38,7 +38,7 @@ pageVO paging = (pageVO) request.getAttribute("page");
 <%
 	if(paging.isPrev()) {
 %>
-	<a href ="">&lt;&lt;</a>
+	<a href ="bulletin.do?page=<%=paging.getStartPage()-1 %>">&lt;&lt;</a>
 <%
 	}
 %>
@@ -46,15 +46,14 @@ pageVO paging = (pageVO) request.getAttribute("page");
 <%
 	for(int i = paging.getStartPage(); i<= paging.getEndPage(); i++){
 %>
-		<a href=""><%= i%></a>
+		<a href="bulletin.do?page=<%=i%>"><%= i%></a>
 <%
 	}
 %>
-
 <%
 	if(paging.isNext()) {
 %>
-	<a href ="">&lt;&lt;</a>
+	<a href ="bulletin.do?page=<%=paging.getEndPage()+1%>">&gt;&gt;</a>
 <%
 	}
 %>
