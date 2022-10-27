@@ -17,7 +17,7 @@ public class Login implements Command {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
 
 		String id = req.getParameter("id");
 		String pass = req.getParameter("passwd");

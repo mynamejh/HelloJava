@@ -5,16 +5,19 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import co.edu.common.Control;
 import co.edu.common.HttpUtil;
 
-public class SignUpForm implements Control {
+public class SignOut implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	HttpUtil.forward(req, resp, "member/memberForm.tiles");
-
+		HttpSession session = req.getSession();
+		session.invalidate(); // 웹 브라우저에 있는 session 값을 삭제하겠다!
+		
+		HttpUtil.forward(req, resp, "memberLog/loginForm.jsp");
 	}
 
 }

@@ -14,6 +14,9 @@ import co.edu.control.BulletinControl;
 import co.edu.control.MainControl;
 import co.edu.control.MemberList;
 import co.edu.control.SearchBoard;
+import co.edu.control.SignIn;
+import co.edu.control.SignInForm;
+import co.edu.control.SignOut;
 import co.edu.control.SignUp;
 import co.edu.control.SignUpForm;
 import co.edu.control.WriteBoard;
@@ -48,7 +51,14 @@ public class FrontController extends HttpServlet {
 		//회원가입
 		controlList.put("/signUpForm.do", new SignUpForm()); //회원가입화면
 		controlList.put("/signUp.do", new SignUp()); // 회원가입처리되면 회원가입되었습니다. 처리된 화면 띄우기
-		controlList.put("/MemberList.do", new MemberList());
+		controlList.put("/MemberList.do", new MemberList()); //멤버목록 보기!
+	
+		controlList.put("/signInForm.do", new SignInForm()); //로그인화면
+		controlList.put("/signIn.do", new SignIn()); //로그인성공
+		
+		controlList.put("/logOutForm.do", new SignOut()); //로그아웃
+		
+		
 	}
 	
 	//service() - 실행될때마다 작동

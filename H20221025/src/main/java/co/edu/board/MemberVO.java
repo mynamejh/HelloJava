@@ -15,6 +15,7 @@ public class MemberVO extends DAO {
 	private String id;
 	private String passwd;
 	private String email;
+	private String date;
 	private String responsibility;
 	
 

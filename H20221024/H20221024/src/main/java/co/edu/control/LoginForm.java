@@ -13,7 +13,7 @@ public class LoginForm implements Command {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		HttpUtil.forward(req, resp, "memberLog/loginForm.jsp");
+		HttpUtil.forward(req, resp, "login/loginForm.tiles");
 		
 
 	}
