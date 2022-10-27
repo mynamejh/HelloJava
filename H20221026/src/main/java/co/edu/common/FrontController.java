@@ -1,5 +1,6 @@
 package co.edu.common;
 
+<<<<<<< HEAD
 import java.io.IOException;
 import java.util.HashMap;
 
@@ -46,4 +47,8 @@ public class FrontController extends HttpServlet {
 		
 	
 	}
+=======
+public class FrontController {
+
+>>>>>>> branch 'master' of https://github.com/mynamejh/HelloJava.git
 }

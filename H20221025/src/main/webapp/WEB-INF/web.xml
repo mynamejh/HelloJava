@@ -5,6 +5,7 @@
 	id="WebApp_ID" version="4.0">
 	<display-name>H20221025</display-name>
 
+<<<<<<< HEAD
 	<listener> <!-- .tiles요청이 발생되면 실행되는 어쩌구... -->
 		<listener-class>org.apache.tiles.extras.complete.CompleteAutoloadTilesListener</listener-class>
 	</listener>
@@ -32,6 +33,36 @@
 		<servlet-name>front</servlet-name>
 		<url-pattern>*.do</url-pattern>
 	</servlet-mapping>
+=======
+	<listener>    <!-- *.tiles가 들어오면 실행. -->
+		<listener-class>org.apache.tiles.extras.complete.CompleteAutoloadTilesListener</listener-class>
+	</listener>
+
+	<servlet>    <!-- *.tiles가 들어오면 같이 실행. -->
+		<servlet-name>Tiles Dispatch Servlet</servlet-name>
+		<servlet-class>org.apache.tiles.web.util.TilesDispatchServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Tiles Dispatch Servlet</servlet-name>
+		<url-pattern>*.tiles</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>front</servlet-name>
+		<servlet-class>co.edu.common.FrontController</servlet-class>
+		<init-param>
+			<param-name>charset</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>front</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+
+
+>>>>>>> branch 'master' of https://github.com/mynamejh/HelloJava.git
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>

@@ -1,5 +1,6 @@
 package co.edu.common;
 
+<<<<<<< HEAD
 import java.io.FileReader;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -32,6 +33,28 @@ public class DAO {
 			
 			//			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "hjh", "hjh");
 	
+=======
+import java.sql.Connection;
+
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+// DB연결 Connection 생성
+public class DAO {
+	public Connection conn;
+	public Statement stmt;
+	public ResultSet rs;
+	public PreparedStatement psmt;
+	
+	//Connection getConnect
+	public Connection getConnect() {
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+		conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "hjh", "hjh");
+//		System.out.println("연결성공");
+>>>>>>> branch 'master' of https://github.com/mynamejh/HelloJava.git
 		
 		}catch(Exception e) {
 			System.out.println("연결실패");

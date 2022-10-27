@@ -1,6 +1,13 @@
 package co.edu.common;
 
+<<<<<<< HEAD
 import javax.servlet.RequestDispatcher;
+=======
+import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+>>>>>>> branch 'master' of https://github.com/mynamejh/HelloJava.git
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 

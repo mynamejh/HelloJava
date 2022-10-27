@@ -12,20 +12,20 @@ import co.edu.common.HttpUtil;
 import co.edu.service.BoardService;
 import co.edu.service.BoardServiceImpl;
 
-public class searchBoard implements Control {
+public class SearchBoard implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		//bno(r게시글번호) 파라메터를 읽어서
+		//bno 파라메터를 읽음.
+		
+		String bno = req.getParameter("bno"); //bno에 값이 들어감
 
-		String bno = req.getParameter("bno");
-		
 		BoardService service = new BoardServiceImpl();
-		BoardVO board = service.findBoard(Integer.parseInt(bno)); //bno값을 한건 리턴해줌!
-		
+		BoardVO board = service.findBoard(Integer.parseInt(bno)); //한건 조회. bno를 int로 변경
+	
 		req.setAttribute("board", board);
 		
-		HttpUtil.forward(req, resp, "bulletin/searchBulltin.tiles");
+		HttpUtil.forward(req, resp, "bulletin/searchBulletin.tiles");
 		
 	}
 

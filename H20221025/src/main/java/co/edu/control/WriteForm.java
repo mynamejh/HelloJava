@@ -14,7 +14,10 @@ public class WriteForm implements Control {
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpUtil.forward(req, resp, "bulletin/writeBulletin.tiles");
+<<<<<<< HEAD
 
+=======
+>>>>>>> branch 'master' of https://github.com/mynamejh/HelloJava.git
 	}
 
 }
