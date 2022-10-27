@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import co.edu.board.BoardVO;
+import co.edu.board.pageVO;
 import co.edu.common.Control;
 import co.edu.common.HttpUtil;
 import co.edu.service.BoardService;
@@ -22,11 +23,14 @@ public class BulletinControl implements Control {
 		page = page == null ? "1" : page;
 		int pg = Integer.parseInt(page);
 		
+		pageVO paging = new pageVO(516,pg);
+	
 		BoardService service = new BoardServiceImpl();
 		List<BoardVO> list = service.pageList(pg);//전체값 조회 getList(new BoardVO(0,"","","","",0,"")); 
 		
 		
 		req.setAttribute("bList", list);
+		req.setAttribute("page", paging);
 		
 		HttpUtil.forward(req, resp, "bulletin/bulletin.tiles"); //데이터부분만 변경해주기위해 tiles사용 ->bulletin.jsp로 이동
 

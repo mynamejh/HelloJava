@@ -37,6 +37,7 @@ public class FrontController extends HttpServlet {
 		controlList.put("/searchBoard.do", new searchBoard());
 		controlList.put("/writeBoardForm.do", new WriteForm());
 		controlList.put("/writeBoard.do", new WriteBoard());
+		
 
 	}
 	
