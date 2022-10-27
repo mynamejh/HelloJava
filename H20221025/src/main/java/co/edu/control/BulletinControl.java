@@ -25,7 +25,7 @@ public class BulletinControl implements Control {
 		
 		PageVO paging = new PageVO(516, pg);
 		
-		
+	
 		BoardServiceImpl service = new BoardService();
 		List<BoardVO> list = service.pageList(pg); 
 		//service.getList(new BoardVO(0,"","","","",0,"")); //전체 데이터 가져오기
