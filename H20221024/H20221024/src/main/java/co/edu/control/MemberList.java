@@ -18,7 +18,7 @@ public class MemberList implements Command {
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		MemberService service = new MemberServiceImpl();
+		MemberService service = new MemberServiceImpl(); //인터페이스 구현
 		List<MemberVO> list = service.memberList();
 		
 		req.setAttribute("memberList", list);

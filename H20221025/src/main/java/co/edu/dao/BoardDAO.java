@@ -246,8 +246,34 @@ public class BoardDAO extends DAO {
 				e.printStackTrace();
 			}
 			return list;
+		}
 		
-		
+		public MemberVO login(String id, String passwd) {
+			getConnect();
+			String sql="select * from members where id=? and passwd=?";
+			try {
+				psmt=conn.prepareStatement(sql);
+				psmt.setString(1, id);
+				psmt.setString(2, passwd);
+				
+				rs=psmt.executeQuery();
+				if(rs.next()) { // 값이 있으면 인스턴스로 반환하고!
+					MemberVO vo = new MemberVO();
+					vo.setId(rs.getString("id"));
+					vo.setName(rs.getString("name"));
+					vo.setEmail(rs.getString("email"));
+					vo.setPasswd(rs.getString("passwd"));
+					vo.setResponsibility(rs.getString("responsibility"));
+					
+					return vo;
+				}
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}finally {
+				disconnect();
+			}
+			return null; // 값이 없는 리턴!
 		}
 		
 }

@@ -8,7 +8,7 @@ import co.edu.common.DAO;
 import co.edu.vo.MemberVO;
 
 
-
+//멤버 DB기능!
 public class MemberDAO extends DAO {
 	//조회 후 수정
 	public void searchAndUpdate() {

@@ -43,5 +43,10 @@ public class BoardService implements BoardServiceImpl{
 	
 	
 	}
+
+	@Override
+	public MemberVO login(String id, String pass) {
+		return dao.login(id,pass);
+	}
 	
 }

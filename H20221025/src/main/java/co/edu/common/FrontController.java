@@ -22,6 +22,7 @@ import co.edu.control.SignUpForm;
 import co.edu.control.WriteBoard;
 import co.edu.control.WriteForm;
 import co.edu.control.faqList;
+import co.edu.control.passwdConfirm;
 
 
 //HttpServlet을 상속받는 서블릿임!
@@ -57,6 +58,9 @@ public class FrontController extends HttpServlet {
 		controlList.put("/signIn.do", new SignIn()); //로그인성공
 		
 		controlList.put("/logOutForm.do", new SignOut()); //로그아웃
+		
+		//비밀번호 전송/ 연습한것▽
+		controlList.put("/passwdReConfirmForm.do", new passwdConfirm()); //비밀번호전송
 		
 		
 	}

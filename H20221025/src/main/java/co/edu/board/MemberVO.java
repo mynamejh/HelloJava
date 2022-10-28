@@ -18,5 +18,8 @@ public class MemberVO extends DAO {
 	private String date;
 	private String responsibility;
 	
+	
+	
+	
 
 }

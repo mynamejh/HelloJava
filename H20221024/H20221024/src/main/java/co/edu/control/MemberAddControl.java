@@ -22,6 +22,7 @@ public class MemberAddControl implements Command {
 		String name = req.getParameter("name");
 		String email = req.getParameter("email");
 
+		//생성
 		MemberVO vo = new MemberVO(id, pw, name, email); // 생성자 순으로 저장! (membervo 확인)
 		
 		//DB 입력처리

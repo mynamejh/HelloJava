@@ -16,4 +16,5 @@ public interface BoardServiceImpl {
 	//페이지
 	public List<BoardVO> pageList(int page); 
 	public List<MemberVO> memberList();
+	public MemberVO login(String id, String pass);
 }
