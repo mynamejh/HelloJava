@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function(){
 {"id":8,"first_name":"Jesus","last_name":"Rosser","email":"jrosser7@meetup.com","gender":"Male","salary":1091},
 {"id":9,"first_name":"Aguistin","last_name":"Fairhurst","email":"afairhurst8@loc.gov","gender":"Male","salary":9226},
 {"id":10,"first_name":"Alvina","last_name":"Boomes","email":"aboomes9@nasa.gov","gender":"Female","salary":2583}]`;
-
+ 
  
  
 //jason 타입 => 자바스크립트 오브젝트
