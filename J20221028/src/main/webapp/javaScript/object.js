@@ -9,7 +9,7 @@ let obj = {
         return 'id: '+ this.user_id +', name: ' + this.user_name +',age: ' + this.user_age;
     }
 }
-
+ 
 console.log('id: ' + obj.user_id);
 console.log('name: '+ obj["user_name"]);
 let field ="user_age";

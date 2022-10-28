@@ -12,7 +12,7 @@
             pw: <input type="password" id="upw" value="1234"><br>
             <input type="submit" value="로그인">
     </form>
-    <div id="show"></div>
+    <div id="show"></div> 
     <script>
         function saveFnc(){
         // document.write('<p>Hello, World</p>');

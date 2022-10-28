@@ -11,7 +11,7 @@ let std2 = new Student('2222','이수만',85);
 let std3 = new Student('3333','홍수현',90);
 
 const students = [std1, std2, std3];
-
+ 
 // <ul><li>학생1</li><li>학생2</li><li>학생3</li></ul>
 //<ul><li>학생정보</li></ul> 이라는 태그를 만들기 위해 .. document.createElement 써서 생성!
 let ulTag = document.createElement('ul');
