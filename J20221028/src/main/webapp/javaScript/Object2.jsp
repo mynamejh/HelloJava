@@ -9,7 +9,7 @@
 <body> 
 
     <div id="show"></div>
-    <script src ="object2.js"></script>
+    <script src ="dom2.js"></script>
 
 
 </body>

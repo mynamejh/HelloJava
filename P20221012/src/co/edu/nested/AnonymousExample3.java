@@ -27,7 +27,7 @@ public class AnonymousExample3 {
 		
 			
 			
-			MyInterface intf2 = kind-> System.out.println(kind +"Run.");
+			MyInterface  = kind-> System.out.println(kind +"Run.");
 			intf2.run("농구종목");
 			
 			MyInterface3 intf3 = (num1,num2) ->  num1 *2+num2;
