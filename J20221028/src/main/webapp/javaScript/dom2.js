@@ -11,7 +11,7 @@ function domLoadedFunc() {
 
 	let obj = {}
 	let result = JSON.parse(data); //파싱 : json => object으로 바꿔줌
-
+	
 	console.log(result);
 	console.log(result[1].email);
 

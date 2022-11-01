@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>fecth.html</title>
+</head>
+
+<body>
+
+	<h3>회원등록페이지.</h3>
+	<form name="submitFrm" action="" method="post">
+		id: <input type="text" id="id"><br>
+		pass: <input type="text" id="passwd"><br>
+		email: <input type="email" id="email"><br>
+		name: <input type="text" id="name"><br>
+		<input type="submit" value="등록">
+	</form>
+	<div id="show"></div>
+		<table border="1">
+		<thead>
+			<tr>
+				<th>아이디</th>
+				<th>이름</th>
+				<th>이메일</th>
+				<th>권한</th>
+				<th>삭제</th>
+		</thead>
+		<tbody id="list">
+		</tbody>
+	</table>
+
+	<script>
+		document.forms.submitFrm.onsubmit = addFunc;
+
+		function addFunc() {
+			let id = document.getElementById('id').value;
+			let pw = document.getElementById('passwd').value;
+			let em = document.getElementById('email').value;
+			let nm = document.getElementById('name').value;
+			let check = id && pw && em && nm;
+			if (!check) {
+				alert('필수항목입니다.')
+				return false;
+			}
+			let data = 'id=' + id + '&passwd=' + pw + '&email=' + em + '&name=' + nm + '&job=insert';
+
+
+			//ajax호출
+			fetch('./MemberListServlet', {
+					method:'post',
+					headers:{
+						'Content-type': 'application/x-www-form-urlencoded'
+				},
+				body: data
+			})
+				.then(result => result.json())
+				.then(addCallback)
+				.catch(err =>{ //에러값이 있으면 출력!
+					console.log(err);
+				});
+
+				return false; //preventDefault();
+		}
+
+		function addCallback(result){
+			console.log(result);
+			document.querySelector('#list').append(makeTr(result));
+
+		//화면입력 방식 초기화하는 방법! (id,name 방식 둘다 가능!)
+			document.getElementById('id').value='';
+			document.querySelector('#name').value='';
+			document.getElementById('passwd').value='';
+			document.getElementById('email').value='';
+		}
+
+		//데이터 한건을 tr생성해주는 함수만드는 방법!!
+		function makeTr(obj) {
+			let tr = document.createElement('tr');
+			tr.setAttribute('id', 'tr_' + obj.id);
+			for (let field in obj) {
+				if (field == 'passwd') continue;
+
+				let td = document.createElement('td');
+				let txt = document.createTextNode(obj[field]);
+				td.append(txt);
+				tr.append(td);
+
+			}
+
+
+		//+삭제버튼 만드는 방법!
+			let btn = document.createElement('button');
+			btn.addEventListener('click',deleteFnc);
+			let td = document.createElement('td');
+			btn.textContent = '삭제'; // 버튼 이름 정할때!(textContent)
+			td.append(btn);
+			tr.appendChild(td);
+			
+		return tr;
+		}
+		
+		//#삭제하는 함수(서블릿호출)!
+		function deleteFnc(){ 
+			let oid = this.parentElement.parentElement.getAttribute('id'); //getattribute(읽을 값) 가져옴!
+			let id = oid.substring('tr_'.length);
+			
+			//서블릿 호출 db삭제
+			let delAjax = new XMLHttpRequest();
+			delAjax.open('post','../MemberListServlet');
+			delAjax.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+			delAjax.send('id='+id+"&job=delete");
+			delAjax.onload = function(){
+				console.log(delAjax.responseText);
+				let result = delAjax.responseText;
+				if(result == 'success'){
+					document.getElementById(oid).remove();
+				}else if(result =='fail'){
+					alert('처리중 에러!!');
+				}
+			}
+
+
+			fetch('MemberListServlet') // 파일 호출! (json파일!)
+				.then(result => result.json()) //정상적으로 실행된다면 (result 매개값) 실행//결과값을 리턴한다			
+				.then(showData)
+				.catch(function (err) { //오류발생시 (err 매개값) 실행
+					console.lot(err);
+				})
+
+			function showData(result) {
+				console.log(result)
+			}
+		}
+	
+	</script>
+</body>
+
+</html>

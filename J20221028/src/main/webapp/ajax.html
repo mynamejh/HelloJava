@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ajax.html</title>
+</head>
+<body>
+	<h3>Ajax호출(원하는것만큼 페이지를 구성한다_ajax)</h3>
+	<button>요청</button>
+	<script> //버튼클릭이벤트를 생성하고 loadData 함수실행해라!
+	document.querySelector('button').addEventListener('click', loadData);
+	
+	function loadData(){
+		let ajax = new XMLHttpRequest(); 
+		ajax.open('get','data/MOCK_DATA.json'); //('요청방식','요청uri')=> 요청페이지 지정부분! _uri는 webapp기준!
+		ajax.send(); //요청!
+		ajax.onload = loadCallback; //아작스에 (onload)에서 event발생하면 this(ajax를 가리킴) 객체!(주의! onload= loac~함수 세트!)
+	}
+	
+	//ajax 객체에 로드이벤트 발생할때 실행할 콜백함수. 
+	function loadCallback() { // loadCallback은 이벤트가 실행될때 함수이기때문에 this는 ajax를 의미! 
+			
+			//console.log(ajax.responseText);
+			let data = JSON.parse(this.responseText); // 텍스트파일을 자바 스크립트 파싱작업하겠다~
+			let table = document.createElement('table'); //테이블이라는 엘리먼트 생성
+			let tbody = document.createElement('tbody'); 
+			data.forEach(row =>{//forEach (매개값 row /배열 요소만큼 반복시킨다_ 배열에서 사용함)
+				tbody.append(makeTr(row));
+			});
+		
+			table.append(tbody); //만들었던 테이블을 tbody에 자식요소에 붙여주겠다!
+			document.getElementsByTagName('body')[0].append(table);	
+		}
+	
+	//data 한 건을 tr로 생성해주는 함수!(makeTr(obj))
+	function makeTr(obj) {
+		let tr = document.createElement('tr');
+		for(let field in obj) {
+			let td =document.createElement('td');
+			let txt= document.createTextNode(obj[field]);
+			td.append(txt);
+			tr.append(td);
+		}
+		return tr;
+	}
+	
+	
+		</script>
+</body>
+</html>

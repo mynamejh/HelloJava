@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title> API 가져오는 방법! </title>
+</head>
+<body>
+시도:<input type="text" id='sido'><button id="findBtn">찾기</button><br>
+	<div id="show">
+		<table border="1">
+			<thead>
+				<tr>
+					<th>센터id</th>
+					<th>센터명</th>
+					<th>연락처</th>
+				</tr>
+			</thead>
+			<tbody id="list">
+			</tbody>
+		</table>
+	</div>
+	<script>
+
+let url ='https://api.odcloud.kr/api/15077586/v1/centers?page=1&perPage=284&serviceKey=Spu0sQUgsx%2BxWq8GGW0v27zb7ckfFAJvcMGVKlt20%2BmeiuNjKwPJMvGUccGtKkRaYTn7AuIJgARiyX4o76IW7g%3D%3D';
+
+fetch(url)
+.then(result => result.json()) //json -> object 변환
+.then(showList)
+.catch(error => console.log(error));
+
+function showList(result){
+	console.log(result) //totalCount, data, pege, current...
+	result.data.forEach(loadCallback); //centerName값을 가져온다
+	
+}
+function loadCallback(center) {
+	console.log(center)
+	document.getElementById('list').append(makeTr(center));
+	
+}
+
+
+//센터명, 연락처 가지고 오는 방법!
+function makeTr(center){
+	let tr = document.createElement('tr');
+	
+	let fields = ['id', 'centerName','phoneNumber'];
+	
+	for(let field of fields){
+		let td = document.createElement('td');
+		let text = document.createTextNode(center[field])
+		td.append(text);
+		tr.append(td);
+		
+	}
+	return tr;
+}
+
+</script>
+</body>
+</html>

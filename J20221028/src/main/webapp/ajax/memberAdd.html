@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>memberAdd.html</title>
+</head>
+<body>
+	<h3>회원등록페이지(서블릿)</h3>
+	<form name="submitFrm" action="" method="post">
+		id:<input type="text" id ="id"><br>
+		pass:<input type="text" id="passwd"><br>
+		email:<input type="email" id="email"><br>
+		name:<input type="text" id="name"><br>
+		<input type="submit" value="등록">
+	</form>
+	<form name="secondFrm"></form>
+	
+	<script>		//on(이벤트실행할때 on쓰기)
+		document.forms.submitFrm.action = "../index.html"; //submitFrm.method ='get'; //상위폴더라서 ..
+		
+		document.forms.submitFrm.onsubmit = function(e){// //◀이 화면에 남아있고 싶을때 preventDefault(); / 이거 없으면 화면 넘어감! (기본기능!)
+			e.preventDefault();
+			//console.log('hhhh'); //위에 id 이름값쓰면 된다!!&  (getelementbyid)
+			let id = document.getElementById('id').value;
+			let pw = document.getElementById('passwd').value;
+			let em = document.getElementById('email').value;
+			let nm = document.getElementById('name').value;
+			let check = id && pw && em && nm; // check라는 변수에다가 값이 있으면 true(그외는 false)
+			
+			if(!check){
+				alert('필수항목입니다!')
+				return false; //function에서 리턴을 만나면 걍 끝남! 밑으로 안내려감!
+			}
+			
+			let data = 'id='+id+'&passwd='+pw+'&email='+email+'&name='+nm; //파라미터 이름=> &이거!
+			let ajax = new XMLHttpRequest();
+			ajax.open('post','../MemberListServlet'); //post방식 호출open('요청방식', '요청페이지(uri)')
+			ajax.setRequestHeader('Content-type', 'application/x-www-form-urlencoded'); //&로 구분!
+			ajax.send(data);
+			ajax.onload = function(){ //ajax라는 객체가 메소드도 있고 속성도 있고
+				console.log(ajax.responseText);
+				let data = JSON.parse(ajax.responseText); //파싱작업 하고!
+				let pTag = document.createElement('p'); // p태그 만들기
+				pTag.textContent ='아이디: ' +data.id +', 이름: '+data.name;
+				
+				document.forms.secondFrm.after(pTag);
+				secondFrm.after(pTag); //secondFrm에 ptag를 넣습니다.
+			}
+		
+		}
+	</script>
+</body>
+</html>
