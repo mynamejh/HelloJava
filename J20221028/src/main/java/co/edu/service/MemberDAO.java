@@ -6,6 +6,7 @@ import java.util.List;
 
 import co.edu.common.DAO;
 import co.edu.member.MemberVO;
+import co.edu.member.ScheduleVO;
 
 public class MemberDAO extends DAO {
 	
@@ -81,4 +82,48 @@ public class MemberDAO extends DAO {
  return list;
 }
 	 
+	 public List<ScheduleVO> List(){
+		 List<ScheduleVO> list2 = new ArrayList<>();
+		 getConnect();
+		 String sql ="select * from full_calendar";
+		 try {
+		 psmt = conn.prepareStatement(sql);
+		 rs = psmt.executeQuery();
+		 while(rs.next()) {
+			 ScheduleVO co = new ScheduleVO();
+			 co.setTitle(rs.getString("title"));
+			 co.setStart(rs.getString("start_date"));
+			 co.setStart(rs.getString("end_date"));
+			 
+			 list2.add(co); 
+		 }
+	 }catch(SQLException e) {
+		 e.printStackTrace();
+	 }finally {
+		 disconnect();
+	 }
+ return list2;
+}
+	 
+		public void insertSch(ScheduleVO vo) {
+			getConnect();
+			String sql ="insert into full_calendar(title,start_date,end_date) values(?,?,?)";
+
+			try {
+				psmt=conn.prepareStatement(sql);
+				psmt.setString(1, vo.getTitle());
+				psmt.setString(2, vo.getStart());
+				psmt.setString(3, vo.getEnd());
+				
+				psmt.executeUpdate();
+				
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}finally {
+				disconnect();
+			}
+			
+		}
+		
 }

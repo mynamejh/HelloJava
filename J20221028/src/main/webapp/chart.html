@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head> 
+    <meta charset="utf-8">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+	//<src js가 있어야함!>
+    
+    let aryData =[]; // ['부서명','부서인원],[Account,3]
+   
+    fetch('./EmpByDepServlet')
+    .then( result => result.json())
+    .then(loadCallback)
+    .catch(err=> console.error(err));
+  
+    function loadCallback(result ={}){
+      console.log(result);
+      aryData.push(['부서명','부서인원']);
+    
+
+      for(let dept in result) {
+        aryData.push([dept,result[dept]]); //result가 가지고 있는 dept값을 넣어줌
+      }
+
+
+      google.charts.load('current', {
+      'packages':['corechart']
+    });
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {//부서별로 인원을 세어보고 표시
+        var data = google.visualization.arrayToDataTable(aryData);
+
+        var options = {
+          title: '부서별 인원현황'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+        chart.draw(data, options);
+      }
+    }
+    
+    </script>
+  </head>
+  <body>
+    <div id="piechart" style="width: 900px; height: 500px;"></div>
+  </body>
+</html>
