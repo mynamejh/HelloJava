@@ -1,6 +1,6 @@
 /**
  * dom3.js
- */
+ *
 
 document.addEventListener('DOMContentLoaded', function(){
    		//버튼 태그를 가져오겠다 # 아이디 조회해서 화면에서 삭제!  ,클릭하면 실행할 함수
