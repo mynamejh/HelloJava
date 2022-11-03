@@ -50,18 +50,16 @@ function showList(result){
 
 }
 
+//값 찾는 방법  //searchKey : 내가 검색창에 입력한 값
 function findCenterList(){
     let searchKey = document.querySelector('#city').value;
-    //searchKey : 내가 검색창에 입력한 값
     let searchAry = data.filter(center => center.sido == searchKey);
     makeList(searchAry);
 }
 
-
+ //화면에 tr이 있으면 tr 삭제 /   //document.querySelectorAll('#list>tr') : 모든 tr값 줌. tr덩어리
 function makeList(ary = []){
-    //화면에 tr이 있으면 tr 삭제 
     document.querySelectorAll('#list>tr').forEach(tr =>tr.remove());
-    //document.querySelectorAll('#list>tr') : 모든 tr값 줌. tr덩어리
     let list = document.getElementById('list');
     
     ary.forEach(center => {
@@ -82,11 +80,10 @@ function makeTr(row){
     tr.setAttribute('fac',row.facilityName); //row.facility 값 생성!! (지도마크 이름써주기위해 만들었음!!)
     tr.addEventListener('click',openInfoWindow);
  
-    //td생성
+    //td생성  //row가 갖고있는값과 field가 갖고 있는 값의 조합
     for(let field in titles) {
         let td= document.createElement('td');
         let txt = document.createTextNode(row[field]); 
-        //row가 갖고있는값과 field가 갖고 있는 값의 조합
         td.appendChild(txt);
         tr.appendChild(td);
     }

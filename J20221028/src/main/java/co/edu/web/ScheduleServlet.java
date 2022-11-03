@@ -24,7 +24,7 @@ public class ScheduleServlet extends HttpServlet {
     public ScheduleServlet() {
         super();
 
-
+    }
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -35,8 +35,25 @@ public class ScheduleServlet extends HttpServlet {
 		response.getWriter().print(gson.toJson(list));
 
 	}
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		doGet(request, response);
+		request.setCharacterEncoding("utf-8");
+		response.setCharacterEncoding(("utf-8"));
+		response.setContentType("text/json;charset=utf-8");
+		
+		MemberDAO dao = new MemberDAO();
+		String title = request.getParameter("title");
+		String start = request.getParameter("start");
+		String end = request.getParameter("end");
+		
+		MemberVO vo = new MemberVO();
+//		vo.setTitle(title);
+	//	vo.setStart_date(start);
+		//vo.setEnd_date(end);
+		
+		//dao.schInput(vo);
+		
+		response.getWriter().print(vo);
 	}
-
 }

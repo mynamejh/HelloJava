@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>todo</title>
+    
+<style>
+
+*{
+    box-sizing:border-box;
+}
+#wrapper{
+    width:600px;
+    margin:0 auto;
+}
+h2{
+    text-align:center;
+}
+form{
+    background-color: #f3bb8a;
+    padding:30px 40px;
+    text-align: center;
+}
+input{
+    border:none;
+    width: 440px;
+    padding: 10px;
+    font-size:16px;
+}
+.addBtn{
+    padding: 10px;
+    width: 60px;
+    border: none;
+    background-color: #fff;
+    box-shadow: 1px 2px 4px #c2e6f7;
+    color:#222;
+    text-align: center;
+    font-size: 14px;
+    cursor:pointer; 
+}
+/* cursor:pointer; : 마우스-> 손가락으로 바뀌는 스타일! */
+
+ul{
+    margin:0;
+    padding:0;
+    list-style: none;
+}
+
+ul li{
+    cursor:pointer;
+    position:relative;
+    padding:12px 8px 12px 40px;
+    background:#eee;
+    font-size:18px;
+}
+ul li:nth-child(odd){
+    background-color: #f9f9f9;
+}
+ul li:hover{
+    background-color: #ddd;
+}
+.close{
+    position:absolute;
+    right:0;
+    top:0;
+    padding:12px 16px;
+}
+.close:hover{
+    background-color: #cffff8;
+    color:white;
+}
+
+
+</style>
+  
+</head>
+
+<body>
+    <div id="wrapper">
+        <h2>TODO리스트</h2>
+        <form>
+            <input type="text" id="item" autofocus>
+            <button type="button" id="add" class="addBtn">추가</button>
+        </form>
+        <div id="itemList"></div>
+    </div>
+    <!-- <script src="js/체크리스트.js"></script> -->
+    <!-- 추가 출력 제거 -->
+    <script>
+        let itemList = [];
+        let addBtn = document.querySelector('#add'); // id가 add인애를 접근
+        addBtn.addEventListener("click", addList);
+
+        function addList() {
+            let item = document.querySelector('#item').value;
+            if (item != '') {
+                itemList.push(item);
+                document.querySelector('#item').value = '';
+                document.querySelector('#item').focus();
+                showList();
+            }
+        }
+
+        function showList() {
+            let list = "<ul>";
+            for (let i = 0; i < itemList.length; i++) {
+                list += "<li>" + itemList[i] + "<span class='close' id=" + i + ">X</span></li>";
+            }
+            list += "</ul>";
+            document.querySelector("#itemList").innerHTML = list;
+
+            let remove = document.getElementsByClassName('close');
+            for (let i = 0; i < remove.length; i++) {
+                remove[i].addEventListener("click", removeList);
+            }
+        }
+
+        function removeList() {
+            let id = this.getAttribute("id"); // 지금 클릭된 애(this-> 이벤트 발생한 애!-> 눌린애를 지워야해서) 
+            itemList.splice(id, 1);
+            showList();
+        }
+    </script>
+</body>
+
+</html>

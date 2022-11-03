@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+
+div{
+    display: inline-block;
+    width:400px;
+    background-color: green;
+}
+
+
+div 
+
+
+
+
+p{
+    display: inline-block;
+    width:60px;
+    background-color: yellow;
+    padding:5px;
+    margin:4px;
+
+}
+
+
+</style>
+
+
+</head>
+<body>
+    단어입력:<input type="text" id="word"><button id="btn">입력</button>
+<div id="wordlist">
+<div id="timer"></div>
+</div>
+<script>
+
+    //이걸로 공부하기!!!!
+
+//1. 틀만들기(필수)>>>>>>>>>>>>>
+let words =  'Lorem ipsum dolor sit amet, consectetur adipiscing elit,Repregendirit, enim asperantur sed do eiusmod tempor incididunt ut labore et dolore magna aliqua'
+
+let wordAry = words.split(' ') // 단어공백을 기준으로  자르겠다
+wordAry.forEach(word =>{ // 워드 하나를 받아서 반복하겠다
+    let pTag = document.createElement('p'); //p태그 만들었다
+    pTag.textContent = word;
+    document.getElementById('wordlist').append(pTag) //ptag를wordlist달겠다!
+}); 
+//<<<<<<<<<<<<<end of 틀만들기
+
+
+//2.삭제방법>>>>>>>
+document.getElementById('btn').addEventListener('click',removeElement);
+
+function removeElement(){ //'word' => 위에 id ('id')
+    let word = document.getElementById('word').value; //내가 입력하는 값 변수지정!
+    document.querySelectorAll('#wordlist>p').forEach(p=>{
+        console.log(p);
+        if(p.textContent==word){ //p.textContent => p태그에 들어있는 단어들 word(변수지정함)=> 내가 창에 입력한 값
+            p.remove(); // p 태그에 그 값을 삭제해라!
+        }
+    })
+    document.getElementById('word').value = null; // =>값을 하나씩 읽어오고 싶으면 이거쓰기
+}
+
+//<<<<<<<<<<< end of 2삭제방법
+
+
+
+
+//# 시분초 만들기!
+Date.prototype.timeFormater = function(){
+    return ("0" + this.getHours()).slice(-2)+":"+
+    ("0"+this.getMinutes()).slice(-2)+":"+
+    ("0"+this.getSeconds()).slice(-2);
+}
+String.prototype.ltrim=function(){
+
+}
+
+let time =50;
+setTimeout(function(){},5000); //=> 5초 있다가 실행
+let timer1 = setInterval(()=>{ //->100초 단위로 반복하겠다
+time--;
+document.getElementById('timer').textContent=time;
+let items = document.querySelectorAll('#wordlist>p');
+
+if(!items.length&&time){
+    alert('success')
+    clearInterval(timer1); //setInterval 을 종료하는 clearInterval(변수)
+}else if(!time){
+    alert('fail');
+    clearInterval(timer1);//setInterval 을 종료하는 clearInterval(변수)
+}
+},1000);
+
+
+//# end of 시분초 만들기!
+document.getElementById('word').focus(); // 단어입력 창에 깜빡깜박시킴 => word태그 포커스
+
+//물어보기. input type 에는 왜 value쓰면 안되나..
+
+
+function makeTr(row){
+    let pTag= document.createElement('p');
+    let btn = document.createElement('button');
+    btn.addEventListener('click',function(){
+        if(word.findWord()==words)
+        this.parentElement.parentElement.remove();
+    });
+}
+
+function findWord(){
+    let key = document.querySelector('#wordlist>p')
+    let searchKey = document.querySelector('#wordlist>p').forEach(p=>p.remove());
+    console.log(key)
+    key.forEach(abc)
+
+}
+
+
+
+
+
+Date.prototype.timeFormater=function() {
+    return("0"+this.getHours()).slice(-2)+":"+
+    ("0"+this.getMinutes()).slice(-2)+":"+
+    ("0"+this.getSeconds()).slice(-2);
+}

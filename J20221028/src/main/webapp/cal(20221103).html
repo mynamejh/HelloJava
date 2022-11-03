@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>달력만들기(20221103 목요일에함!)</title>
+<style>
+    div{
+
+        
+    }
+
+
+
+</style>
+
+
+
+
+<script>
+    //>>>객체, 배열생성>>>>
+    let obj={
+        id:'hong'
+    }
+
+    obj = {}// new Object();
+    let ary =[] // 배열선언 new array();
+    let today= new Date(); //new Date가 날짜나오는 메서드!
+    let year = today.getFullYear(); //연도출력
+    let month = today.getMonth()+1; // 월은 0부터 시작,,, 그래서 +1 해줘야 현재 달력이 표시된다
+    let thisDay = today.getDay(); //요일출력
+    let date = today.getDate(); //날짜출력
+    console.log(year);
+    console.log(month);
+    console.log(thisDay);
+    console.log(date);
+
+    //document.querySelector(`.dateTitle`).innerText = `&{year}년 &{month}월`;
+    
+    ary2=year+'년 '+month+'월 '+date+'일 ';
+
+    console.log(ary2);
+
+    
+    //getFullYear, getMonth 써서 넣어보기
+
+    //1. 시작에 할것 (필수) => 실행할때 함수
+
+    //>>>>>>>테이블 만들기(기본틀)>>>>>
+    document.addEventListener('DOMContentLoaded',function(){
+
+        today = new Date(2022,10,1);
+       // let thisDay = today.getDay(); // 오늘날짜 요일을 가져온다.let today= new Date()가 가지고 있는~
+        let lastDate = 31;
+       // console.log(thisDay) //getDay왜..?
+        let table = document.createElement('table');
+        table.setAttribute('border','1');
+
+        let tbody= document.createElement('tbody');
+        let tr = document.createElement('tr');
+        tbody.append(tr);
+        
+        // 해당날짜 요일 생성.
+        for(let i=0; i<thisDay;i++){
+            let td = document.createElement('td');
+            tr.append(td);
+        }
+        //>> 숫자생성(달력날짜)_ 캘린더형태
+        for(let i = 1; i<=lastDate; i++){ //계속 td를 tr(줄)에 붙이기 위해 반복문 사용!
+            let td = document.createElement('td');
+            td.textContent=i;
+            tr.append(td);
+            if((i+thisDay)%7==0){//4주로 나누기
+                tr= document.createElement('tr');
+                tbody.append(tr);
+            }
+        }
+       table.append(tbody)
+       document.getElementById('show').append(table);
+  
+    })
+
+    function calendar(){
+        let doMonth = newDate(today.getFullYear(),today.getMonth(),1);
+    }
+
+</script>
+</head>
+<body>
+
+    <div id="show"></div>
+    <h3 allign="center">11월 달력..</h3>
+    <tr>
+        <td>월</td>
+        <td>화</td>
+        <td>수</td>
+        <td>목</td>
+        <td>금</td>
+        <td>토</td>
+        <td>일</td>
+    </tr>
+
+  
+</body>
+
+</html>
