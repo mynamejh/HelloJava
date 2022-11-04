@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>도서목록 페이지</title>
+	<script src="js/indexScript.js"></script>
+</head>
+<style>
+	body {
+		width: 800px;
+		margin: 0 auto;
+	}
+
+	body>h3 {
+		text-align: center;
+	}
+
+	form {
+		float: left;
+		width: 550px;
+	}
+
+	#btns {
+		margin-left: 40px;
+		margin-top: 50px;
+		float: left;
+	}
+	button{
+		width: 100px;
+		margin: 5px;
+	}
+
+	#show {
+		clear: both;
+	}
+
+	#insert li {
+		list-style: none;
+	}
+
+	#insert li label {
+		display: inline-block;
+		width: 150px;
+		text-align: center;
+		background-color: cadetblue;
+	}
+
+	#insert li input {
+		width: 300px;
+		padding: 3px;
+		margin: 3px;
+	}
+
+	#show td {
+		padding: 5px;
+		text-align: center;
+	}
+
+	#show thead {
+		background-color: #ddd;
+	}
+
+	table{
+		width: 750px;
+		margin: 0 auto;
+	}
+
+</style>
+
+<body>
+	<h3>도서목록 페이지</h3>
+	<div id="insert">
+		<form name="submitFrm" action="" method="post">
+			<ul>
+				<li><label>도서코드</label> <input type="text" id="bookCode"></li>
+				<li><label>도서명</label> <input type="text" id="bookName"></li>
+				<li><label>저자</label> <input type="text" id="bookAuthor"></li>
+				<li><label>출판사</label> <input type="text" id="bookPress"></li>
+				<li><label>금액</label> <input type="text" id="bookPrice"></li>
+			</ul>
+		</form>
+		<div id="btns">
+			<button id="submit">저장</button><br>
+			<button id="selectDelete">선택삭제</button>
+		</div>
+	</div>
+	<div id="show">
+		<table>
+			<thead>
+				<tr>
+					<th><input type="checkbox" id="checkbox"></th>
+					<th>도서코드</th>
+					<th>도서명</th>
+					<th>저자</th>
+					<th>출판사</th>
+					<th>가격</th>
+					<th>삭제</th>
+				</tr>
+			</thead>
+			<tbody id="list">
+			</tbody>
+		</table>
+	</div>
+</body>
+
+</html>
