@@ -83,5 +83,7 @@ document.addEventListener('DOMContentLoaded', function(){
 	//데이터 추가(위에 adddata 함수 미리 만들었음!)
 	tableObject.addData({id: 'user4', name: '황선홍', email:'hwang@email'});
 	tableObject.init();
-	
+
 	})//end of DOMceontentLoaded 
+}
+

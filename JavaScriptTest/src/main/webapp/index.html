@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="javaScript/book.js"></script>
+</head>
+<body>
+	<h3>도서목록 페이지</h3>
+	<form name="bookPage" action="" method="post">
+		도서코드:<input type="text" id="bookCode"><br>
+		도서명:<input type="text" id="title"><br>
+		저자:<input type="text" id="author"><button type=submit>저장</button><br>
+		출판사:<input type="text" id="press"><button type=submit id="del">선택삭제</button><br>
+		금액:<input type="text" id="price">
+	</form>
+   <div id="show"></div> 
+  	 <table border="1">
+   		<thead>
+   			<tr>
+	   			<th>도서코드</th>
+	   			<th>도서명</th>
+	   			<th>저자</th>
+	   			<th>출판사</th>
+	   			<th>가격</th>
+   </thead>
+   <tbody id="list"></tbody>
+   				
+   
+   
+   </table>	
+   
+	 <script>
+			document.forms.bookPage.onsubmit = addFunc;
+			
+			function addFunc(){
+				let code = document.getElementById('bookCode').value;
+				let title = document.getElementById('title').value;
+				let author = document.getElementById('author').value;
+				let press = document.getElementById('press').value;
+				let price = document.getElementById('price').value;
+				
+				let date ='bookCode='+ code +'&title='+ title +'&author='+ author + '&press='+press+'&price='+ price;
+				
+				fetch('/BookAddServlet',{
+					method:'post',
+					headers:{
+						'Content-type': 'application/x-www-form-urlencoded'
+					}
+			
+				})
+				
+				.then(result => result.json())
+				.then (addCallback)
+				.catch(err => {console.log(err);
+						
+			});
+		
+				return false;
+		}
+		
+		function addCallback(result){
+			document.querySelector('#list').append(makeTr(result));
+		}
+		
+		
+		
+		
+		function makeTr(obj){
+			let tr = document.createElement('tr');
+			tr.setAttribute('title'+obj.title);
+			for(let field in obj){
+				if(field == 'title') continue;
+				
+				let td = document.createElement('td');
+				let txt = document.createTextNode(obj[field]);
+				td.append(txt);
+				tr.append(td);
+			}
+			
+		
+			let btn = document.getElementById('del');
+			btn.addEventListener('click',deleteFnc);
+			let td = document.createElement('td');
+			btn.textContent = '삭제'; 
+			td.append(btn);
+			tr.appendChild(td);
+			
+			return tr;
+		}
+		
+		function deleteFnc(){
+
+			console.log('삭제완료');
+			let oid = this.parentElement.parentElement.getAttribute('bookCode');
+		let delAjax = new XMLHttpRequest();
+		delAjax.opne('post','../BookDelServlet');
+		delAjax.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+		delAjax.send();
+		
+	
+		}
+			
+		fetch('BookListServlet')
+		.then(result => result. json())
+		.then(showData)
+		.catch(err => {console.log(err);
+						
+			});
+		
+		function showData(result){
+			console.log(result)
+		}
+		
+		</script>
+	
+	
+	
+	
+	
+	
+	
+</body>
+</html>
