@@ -57,7 +57,7 @@ function makeItemDIv(item = {}) {
 
     //addCart를 누르면 1씩 증가하는 함수
     function addClick(e){
-        e.preventDefault();
+        e.preventDefault();//화면 유지
         let cart = document.querySelector('nav.navbar>div>div>form.d-flex>button');
         let numClick = cart.querySelector('span.badge').textContent;
         numClick ++;
