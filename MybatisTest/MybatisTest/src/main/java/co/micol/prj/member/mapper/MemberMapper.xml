@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.micol.prj.member.mapper.MemberMapper">
+	<select id="memberSelectList">
+		SELECT * FROM MEMBERS
+	</select>
+	<select id="memberSelect" resultType="co.micol.prj.member.vo.MemberVO">
+		SELECT * FROM MEMBERS
+		WHERE ID = #{id}
+	</select>
+	<insert id="memberInsert">
+		INSERT INTO MEMBERS
+		VALUES(#{id}, #{passwd}, #{name}, #{email}, #{responsibility})
+	</insert>
+	<delete id="memberDelete">
+		DELETE MEMBERS
+		WHERE ID = #{id}
+	</delete>
+	<update id="memberUpdate">
+		UPDATE MEMBERS 
+		SET id = #{bookTitle},
+			passwd = #{bookAuthor},
+			name = #{bookPress},
+			email = #{bookPrice},
+			responsibility = #{responsibility},
+		WHERE BOOK_CODE = #{bookCode};
+	</update>
+	
+	<!-- 로그인 -->
+	<select id="memberLogin" resultType="co.micol.prj.member.vo.MemberVO">
+		SELECT * FROM MEMBERS
+		WHERE ID = #{id} AND PASSWD = #{password}	
+	</select>
+	
+	<!--아이디 중복 체크 -->
+	<select id="isMemberIdCheck" resultType="boolean">
+		SELECT CASE WHEN COUNT(ID) = 1 THEN 0 ELSE 1 END AS ID
+		FROM MEMBERS WHERE ID = #{id};
+	</select>
+	<!-- 0이면 false true면 1이라서 sql문을 이렇게 써준거 -->
+</mapper>

@@ -27,6 +27,6 @@ public class DataSource { // 마이바티스를 사용하기때문에 return Sql
 		
 		return sqlSessionFactory;
 	}
-
+//sqlSessionFactory mapper을 통해서 사용
 
 }

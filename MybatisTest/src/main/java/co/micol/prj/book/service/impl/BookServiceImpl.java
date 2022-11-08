@@ -10,10 +10,11 @@ import co.micol.prj.book.vo.BookVO;
 import co.micol.prj.common.DataSource;
 
 public class BookServiceImpl implements BookService {
-//bookSerivce.interface의 구현
-	private SqlSession sqlSession = DataSource.getInstace().openSession(true); //true를 써야 autoCommit 가능 
-	private BookMapper map = sqlSession.getMapper(BookMapper.class);
-	//위 두줄이 DB를 연결하고, mapper연결
+	//bookSerivce.interface의 구현
+		private SqlSession sqlSession = DataSource.getInstace().openSession(true); //true를 써야 autoCommit 가능 
+		private BookMapper map = sqlSession.getMapper(BookMapper.class);
+		//위 두줄이 DB를 연결하고, mapper연결
+		
 	
 	@Override
 	public List<BookVO> bookSelectList() {
