@@ -24,7 +24,6 @@
 	
 	<mappers>
 		<!-- 쿼리를 여기서 가져오라고 주소 써줌 mapper.xml 주소 -->
-		<mapper resource="co/micol/prj/book/mapper/BookMapper.xml" />
-		<mapper resource="co/micol/prj/member/mapper/MemberMapper.xml"/>
+		<package name="co.micol.prj"/>
 	</mappers>
 </configuration>
